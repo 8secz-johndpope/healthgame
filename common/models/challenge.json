@@ -1,0 +1,99 @@
+{
+	"name": "Challenge",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"userId": {
+			"type": "number",
+			"required": true
+		},
+		"weekAt": {
+			"type": "date",
+			"required": true,
+			"dataType": "date"
+		},
+		"name": {
+			"type": "string",
+			"required": true,
+			"length": 255
+		},
+		"type": {
+			"type": "string",
+			"required": true,
+			"length": 32
+		},
+		"numTeams": {
+			"type": "number",
+			"required": true,
+			"default": 1
+		},
+		"perTeam": {
+			"type": "number",
+			"required": true,
+			"default": 1
+		}
+	},
+	"validations": [],
+	"relations": {
+		"user": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "userId"
+		},
+		"weeklyStatuses": {
+			"type": "hasMany",
+			"model": "WeeklyStatus",
+			"foreignKey": "challengeId"
+		},
+		"invites": {
+			"type": "hasMany",
+			"model": "ChallengeInvite",
+			"foreignKey": "challengeId"
+		},
+		"invitees": {
+			"type": "hasMany",
+			"model": "User",
+			"through": "ChallengeInvite",
+			"foreignKey": "challengeId"
+		},
+		"teams": {
+			"type": "hasMany",
+			"model": "ChallengeTeam",
+			"foreignKey": "challengeId"
+		},
+		"stats": {
+			"type": "hasMany",
+			"model": "ChallengeStats",
+			"foreignKey": "challengeId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"accessType": "READ"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "create"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "upsert"
+		}
+	],
+	"methods": []
+}

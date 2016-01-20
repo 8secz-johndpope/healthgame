@@ -1,0 +1,198 @@
+.navbar {
+	margin: 0;
+	border-radius: 0;
+}
+
+#navigation {
+	border: 0;
+
+	.navbar-nav {
+		@media (max-width: @screen-sm-max) {
+			margin: 0 -15px;
+		}
+
+		&.navbar-right {
+			li {
+				@media (max-width: @screen-xs-max) {
+					border-top: 1px solid @gray-lighter;
+
+					&.dropdown {
+						text-align: center;
+						.open;
+
+						.dropdown-toggle {
+							display: none;
+						}
+
+						.dropdown-menu {
+							padding: 0;
+							position: static;
+							float: none;
+							width: auto;
+							margin-top: 0;
+							background-color: transparent;
+							border: 0;
+							box-shadow: none;
+
+							li {
+								border: 0;
+								border-left: 1px solid @gray-lighter;
+								display: block;
+								float: none;
+								width: 100%;
+
+								a {
+									padding: 10px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.navbar-nav:not(.navbar-right) {
+		> li > a {
+			&:extend(.webfont-icon all);
+			text-align: center;
+			color: @gray-light;
+			height: 62px;
+			width: auto;
+
+			@media (max-width: @screen-sm-max) {
+				padding-left: @padding-large-vertical;
+				padding-right: @padding-large-vertical;
+			}
+			@media (max-width: @screen-xs-max) {
+				height: 54px;
+				line-height: 34px;
+				text-align: left;
+				width: 100%;
+			}
+			&:before {
+				display: block;
+				float: none;
+				margin-bottom: 4px;
+
+
+				@media (max-width: @screen-xs-max) {
+					float: left;
+					padding-right: @padding-base-vertical;
+					line-height: 34px;
+				}
+			}
+			&[href="/challenges"] {
+				.webfont-trophy();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @orange;
+				}
+			}
+			&[href="/steps"] {
+				.webfont-flag();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @red-purple;
+				}
+			}
+			&[href="/goals"] {
+				.webfont-calendar();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @green;
+				}
+			}
+			&[href="/quizzes"] {
+				.webfont-question-circle();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @teal;
+				}
+			}
+			&[href="/friends"] {
+				.webfont-users();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @blue;
+				}
+			}
+			&[href="/howto"] {
+				.webfont-play-circle();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @main-bg-color;
+				}
+			}
+			&[href="/datasecurity"] {
+				.webfont-certificate();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @main-bg-color;
+				}
+			}
+			&[href="/aboutus"] {
+				.webfont-users();
+				&:hover, &:focus, &:active, &.active {
+					border-bottom: 3px solid @main-bg-color;
+				}
+			}
+			&:hover, &:focus, &:active, &.active {
+				color: @gray;
+				background-color: @gray-lighter;
+				box-sizing: border-box;
+			}
+		}
+	}
+	.navbar-toggle {
+		margin: 14px 10px 14px 0;
+		.icon-bar {
+			background-color: @gray;
+		}
+	}
+	.navbar-brand {
+		&:extend(.webfont-icon all);
+		.webfont-heartbeat();
+		color: @gray;
+		line-height: 36px;
+		height: 62px;
+
+		&:before {
+			padding-right: 5px;
+			color: @blue;
+		}
+	}
+	@profile-image-size: 40px;
+	.x-profile-image {
+		&:extend(.round-profile-image all);
+		width: @profile-image-size;
+		height: @profile-image-size;
+		margin-right: 5px;
+
+		img {
+			width: @profile-image-size;
+			height: @profile-image-size;
+		}
+
+		& + span {
+			line-height: 16px;
+			padding-top: 4px;
+		}
+	}
+	.x-userhome {
+		padding: 0;
+		padding: 11px;
+		> span {
+			display: block;
+			float: left;
+		}
+	}
+	.navbar-right > li > a {
+		.clearfix;
+		color: @gray-light;
+	}
+	.x-username {
+		font-weight: bold;
+		white-space: nowrap;
+	}
+	.dropdown > a {
+		background-color: @gray-lighter;
+		border-left: 1px solid @gray-lighter;
+		padding-top: 21px;
+		padding-bottom: 21px;
+		width: auto;
+	}
+}

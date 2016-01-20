@@ -1,0 +1,25 @@
+<div class="box x-gray-light">
+	<header>
+		<h1>Allgemein</h1>
+	</header>
+	<div class="x-content">
+		<form ng-submit="updateSettings()" ng-controller="SettingsController" name="generalSettingsForm" novalidate>
+			<ul>
+				<li>
+					E-Mail-Adresse
+				</li>
+				<li>
+					<div class="form-group">
+						<input type="email" class="form-control" id="email" placeholder="E-Mail" required ng-model="user.email"/>
+					</div>
+				</li>
+				<li ng-if="success !== undefined" class="x-alert-box">
+					<div class="alert ng-class: {'alert-success': success, 'alert-danger': !success}">{{ message }}</div>
+				</li>
+				<li>
+					<button type="submit" ng-disabled="!updateSettings" class="btn btn-primary">Speichern</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>

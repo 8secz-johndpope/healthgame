@@ -1,0 +1,33 @@
+<div id="quizzes" ng-show="$root.isLoggedIn">
+	<div ng-repeat="(week_key, week) in quizzes" class="x-quiz-week ng-class: {'x-open': (!week_key || week_key && weekStates[week_key]), 'x-close': (week_key && !weekStates[week_key])}">
+		<a ng-click="toggleWeekState(week_key)" class="x-quiz-week-opener ng-class: {'first': !week_key}">{{week.title}}</a>
+		<div class="row">
+			<div class="col-md-12">
+				<div ng-repeat="(line_key, line) in week.lines" ng-if="line.length" class="row">
+					<div
+						ui-sref="quizzes.detail({id: quiz.id})"
+						ng-click="openQuiz(quiz.id)"
+						ng-repeat="(quiz_key, quiz) in line"
+						class="ng-class: {
+							'col-sm-6': (line_key == 0 && quiz_key == 0),
+							'col-sm-3': (line_key != 0 || quiz_key != 0),
+							'invisible': (quiz.id == null)
+						}">
+						<div class="box x-teal">
+							<header>
+								<h1>{{quiz.dayAt === today  ? "Heutiges Quiz" : quiz.title}}</h1>
+							</header>
+							<div class="x-content">
+								<h2>{{quiz.dayAt === today ? quiz.title : (quiz.total || 0) + "/3 Richtige"}}</h2>
+								<p>{{quiz.dayAt === today ? quiz.description : quiz.dayAt | date:'EEEE'}}</p>
+								<div class="x-points webfont-icon webfont_star">
+									{{quiz.dailyStatuses[0].quizPointLog.points || 0}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

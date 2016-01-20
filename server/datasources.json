@@ -1,0 +1,14 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysqlDs": {
+    "name": "mysqlDs",
+    "connector": "mysql"
+  },
+  "mail": {
+    "name": "mail",
+    "connector": "mail"
+  }
+}

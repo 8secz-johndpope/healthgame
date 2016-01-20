@@ -1,0 +1,10 @@
+{
+	"name": "FitbitDevice",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"properties": {
+		"deviceId": {
+			"type": "string"
+		}
+	}
+}

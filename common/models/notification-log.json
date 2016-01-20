@@ -1,0 +1,126 @@
+{
+	"name": "NotificationLog",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"userId": {
+			"type": "number",
+			"required": true
+		},
+		"createdAt": {
+			"type": "date",
+			"required": true
+		},
+		"type": {
+			"type": "string",
+			"required": true
+		},
+		"friendId": {
+			"type": "number",
+			"required": false
+		},
+		"badgeLogId": {
+			"type": "number",
+			"required": false
+		},
+		"challengeId": {
+			"type": "number",
+			"required": false
+		},
+		"levelLogId": {
+			"type": "number",
+			"required": false
+		},
+		"pointLogId": {
+			"type": "number",
+			"required": false
+		},
+		"dailyStatusId": {
+			"type": "number",
+			"required": false
+		},
+		"userGoalId": {
+			"type": "number",
+			"required": false
+		},
+		"friendshipId": {
+			"type": "number",
+			"required": false
+		}
+	},
+	"validations": [],
+	"relations": {
+		"user": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "userId"
+		},
+		"friend": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "friendId"
+		},
+		"badgeLog": {
+			"type": "belongsTo",
+			"model": "BadgeLog",
+			"foreignKey": "badgeLogId"
+		},
+		"challenge": {
+			"type": "belongsTo",
+			"model": "Challenge",
+			"foreignKey": "challengeId"
+		},
+		"levelLog": {
+			"type": "belongsTo",
+			"model": "LevelLog",
+			"foreignKey": "levelLogId"
+		},
+		"pointLog": {
+			"type": "belongsTo",
+			"model": "PointLog",
+			"foreignKey": "pointLogId"
+		},
+		"dailyStatus": {
+			"type": "belongsTo",
+			"model": "DailyStatus",
+			"foreignKey": "dailyStatusId"
+		},
+		"weeklyStatus": {
+			"type": "belongsTo",
+			"model": "WeeklyStatus",
+			"foreignKey": "weeklyStatusId"
+		},
+		"userGoal": {
+			"type": "belongsTo",
+			"model": "UserGoal",
+			"foreignKey": "userGoalId"
+		},
+		"friendship": {
+			"type": "belongsTo",
+			"model": "Friendship",
+			"foreignKey": "friendshipId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "notifications"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "notificationsCount"
+		}
+	],
+	"methods": []
+}

@@ -1,0 +1,102 @@
+table.row.weeklygoal
+	tr
+		td.wrapper.last
+			table.twelve.columns
+				tr
+					td
+						h4.healingo-content-text Gestriges Ziel
+						p.healingo-content-normal
+							span Gestern hast du&nbsp;
+								b= yesterday.status.stepsDoneFormatted || 0
+							span &nbsp;Schritte und somit Dein Schrittziel&nbsp;
+								if (yesterday.status.stepsDone < yesterday.status.stepsGoal)
+									span nicht&nbsp;
+							span erreicht.
+							br
+							span Du hast im Quiz&nbsp;
+								b= yesterday.points.quizPoint
+							span &nbsp;Punkte erreicht.
+					td.expander
+	tr.wrapper
+		td
+			table.twelve.columns(align="center")
+				tr
+					//- Box1
+					td
+						table.three.columns.goalbox.pink(align="center")
+							tr
+								td &nbsp;
+							tr
+								td.icon(align="center")
+									table.imgtable
+										tr
+											td.outCenter &nbsp;
+											td
+												img.png-img(src=host+"/images/mail/schrittziel.jpg")
+							tr
+								td
+									p.healingo-lbox-text1 Schrittziel
+							tr
+								td
+									p.healingo-values= yesterday.stepGoalPointsFormatted || 0
+									p.healingo-lbox-text2 Bonuspunkte
+
+					//- Box2
+					td
+						table.three.columns.goalbox.blue(align="center")
+							tr
+								td &nbsp;
+							tr
+								td.icon(align="center")
+									table.imgtable
+										tr
+											td.outCenter &nbsp;
+											td
+												img.png-img(src=host+"/images/mail/quiz.jpg")
+							tr
+								td
+									p.healingo-lbox-text1 Quiz
+							tr
+								td
+									p.healingo-values= yesterday.points.quizPoint || 0
+									p.healingo-lbox-text2 Punkte
+
+					//- Box3
+					td
+						table.three.columns.goalbox.green(align="center")
+							tr
+								td &nbsp;
+							tr
+								td.icon(align="center")
+									table.imgtable
+										tr
+											td.outCenter &nbsp;
+											td
+												img.png-img(src=host+"/images/mail/wochenziel.jpg")
+							tr
+								td
+									p.healingo-lbox-text1 Wochenziele
+							tr
+								td
+									p.healingo-values= yesterday.points.goalPoint || 0
+									p.healingo-lbox-text2 Punkte
+
+					//- Box4
+					td
+						table.three.columns.goalbox.orange(align="center")
+							tr
+								td &nbsp;
+							tr
+								td.icon(align="center")
+									table.imgtable
+										tr
+											td.outCenter &nbsp;
+											td
+												img.png-img(src=host+"/images/mail/challenges.jpg")
+							tr
+								td
+									p.healingo-lbox-text1 Challenges
+							tr
+								td
+									p.healingo-values= yesterday.points.challengePoint || 0
+									p.healingo-lbox-text2 Punkte

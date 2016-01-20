@@ -1,0 +1,139 @@
+<div id="friends">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-8">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="box x-blue" ng-if="requests.length">
+						<div>
+							<header>
+								<h1>Freundschaftsanfragen</h1>
+							</header>
+							<div class="x-content">
+								<ul class="x-list">
+									<li ng-repeat="friend in requests">
+										<div class="row">
+											<div class="col-md-7">
+												<div class="x-friendprofile-image">
+													<span data-x-profile-link data-friendid="friend.id">
+														<img ng-src="{{ friend.avatar100 | avatar100 }}" alt="{{ friend.username}}" />
+													</span>
+												</div>
+												<div class="x-friendprofile-info">
+													<span data-x-profile-link data-friendid="friend.id">
+														<span>{{ friend.username}}</span>
+													</span>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<div class="x-friendprofile-btn-box pull-right">
+													<a ng-click="sendRequest(friend.id)" class="x-friendconfirm btn btn-warning">bestätigen</a>
+													<a ng-click="sendDeny(friend.id)" class="x-frienddeny btn btn-danger" title="ablehnen">ablehnen</a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+								<p ng-if="requests.length == 0">Du hast keine Freundschaftsanfragen.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="box x-blue">
+						<header>
+							<h1>Meine Freunde</h1>
+						</header>
+						<div class="x-content">
+							<ul ng-if="friends.length" class="x-list">
+								<li ng-repeat="friend in friends">
+									<div class="row">
+										<div class="col-md-7">
+											<div class="x-friendprofile-image">
+												<span data-x-profile-link class="x-friendprofile" data-friendid="friend.id">
+													<img ng-src="{{ friend.avatar100 | avatar100 }}" alt="{{ friend.username}}" />
+												</span>
+											</div>
+											<div class="x-friendprofile-info">
+												<span data-x-profile-link class="x-friendprofile" data-friendid="friend.id">
+													<span>{{ friend.username}}</span>
+												</span>
+											</div>
+										</div>
+										<div class="col-md-5">
+											<div class="x-friendprofile-btn-box pull-right">
+												<a ng-click="sendDeny(friend.id)" class="x-frienddeny btn btn-danger" title="entfolgen">beenden</a>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<p ng-if="friends.length == 0">Du hast keine Freunde.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class="col-xs-12 col-sm-12 col-md-4">
+			<div class="box x-new-friends x-blue">
+				<header>
+					<h1>Neue Freunde </h1>
+				</header>
+				<div class="x-content" ng-controller="FriendsController" >
+					<div class="input-box">
+						<input ng-model="usersearch" type="text" class="form-control" name="usersearch" id="usersearch" placeholder="Freunde suchen..."/>
+					</div>
+					<ul cg-busy="waitSearch" class="x-list">
+						<li ng-repeat="user in userresult">
+							<div class="x-friendprofile-image">
+								<span data-x-profile-link data-friendid="friend.id">
+									<img ng-src="{{ user.avatar100 | avatar100 }}" alt="{{ user.username}}" />
+								</span>
+							</div>
+							<div class="x-friendprofile-info">
+								<span data-x-profile-link data-friendid="friend.id">
+									<span>{{ user.username}}</span>
+								</span>
+								<div class="x-friendprofile-btn-box">
+									<span ng-if="user.friendStatus.selfRequest" class="x-friendstatus alert alert-info">angefragt</span>
+									<span ng-if="user.friendStatus.confirmed" class="x-friendstatus alert alert-success">befreundet</span>
+									<a ng-if="user.friendStatus.nothing" ng-click="sendRequest(user.id)" class="x-friendrequest btn btn-success pull-right">hinzufügen</a>
+									<a ng-if="user.friendStatus.otherRequest" ng-click="sendRequest(user.id)" class="x-friendconfirm btn btn-warning pull-right">bestätigen</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div ng-if="userNotFound" class="x-no-content">Keine Freunde gefunden.</div>
+				</div>
+			</div>
+			<div ng-if="mutuals.length" class="box x-blue">
+				<header>
+					<h1>Vielleicht kennst du</h1>
+				</header>
+				<div class="x-content">
+					<ul class="x-list">
+						<li ng-repeat="mutual in mutuals">
+							<div class="x-friendprofile-image">
+								<span data-x-profile-link class="x-friendprofile" data-friendid="friend.id">
+									<img ng-src="{{ mutual.avatar100 | avatar100 }}" alt="{{ mutual.username}}" />
+								</span>
+							</div>
+
+							<div class="x-friendprofile-info">
+								<span data-x-profile-link class="x-friendprofile" data-friendid="friend.id">
+									<span>{{ mutual.username}}</span>
+								</span>
+							</div>
+							<div class="x-friendprofile-btn-box">
+								<a ng-click="sendRequest(mutual.id)" class="x-friendrequest btn btn-success pull-right">hinzufügen</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

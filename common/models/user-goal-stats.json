@@ -1,0 +1,39 @@
+{
+	"name": "UserGoalStats",
+	"base": "PersistedModel",
+	"properties": {
+		"id": {
+			"type": "number",
+			"required": true,
+			"id": true
+		},
+		"persons": {
+			"type": "number"
+		},
+		"tipsCount": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"goal": {
+			"type": "belongsTo",
+			"model": "WeeklyGoal",
+			"foreignKey": "id"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"accessType": "READ" 
+		}
+	],
+	"methods": []
+}

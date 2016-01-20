@@ -1,0 +1,33 @@
+{
+	"name": "ChallengeTeam",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"challengeId": {
+			"type": "number",
+			"required": true
+		},
+		"teamNum": {
+			"type": "number",
+			"required": true
+		}
+	},
+	"validations": [],
+	"relations": {
+		"challenge": {
+			"type": "belongsTo",
+			"model": "Challenge",
+			"foreignKey": "challengeId"
+		},
+		"members": {
+			"type": "hasMany",
+			"model": "ChallengeTeamMember",
+			"foreignKey": "teamId"
+		}
+	},
+	"acls": [],
+	"methods": []
+}

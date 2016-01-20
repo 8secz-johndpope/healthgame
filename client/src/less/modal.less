@@ -1,0 +1,124 @@
+.modal-dialog {
+
+	.modal-content {
+		background-color: #eeeeee;
+		border-radius: 0;
+
+		.modal-body {
+			padding: 0 15px;
+
+			.modal-box {
+				background-color: #eeeeee;
+
+				.box {
+					background-color: #eeeeee;
+				}
+
+				header {
+
+					h2 {
+						color: black;
+						font-size: 24px;
+						margin-top: 0;
+						margin-bottom: 0px;
+						display: block;
+						background-color: white;
+						padding: (@grid-gutter-width/2);
+					}
+				}
+
+				h3 {
+					font-size: 16px;
+					margin: 0 0 20px 0;
+					padding: 0;
+				}
+
+				.x-score {
+					margin-top: @padding-base-horizontal;
+
+					.good {
+						width: 100%;
+						text-align: center;
+						&:extend(.webfont-icon all);
+						.webfont-trophy();
+						font-size: 5em;
+						margin-bottom: @padding-base-horizontal * 4;
+
+						span {
+							display: block;
+							font-size: 24px;
+							font-weight: bold;
+							margin-top: @padding-base-horizontal;
+						}
+					}
+
+					.x-points {
+						display: block;
+						font-size: 2em;
+					}
+				}
+
+				.x-info {
+					padding: 15px;
+				}
+
+				.x-sidebar,
+				.x-content {
+					padding: 15px;
+				}
+
+				.x-question-block {
+					margin-bottom: 30px;
+
+					.radio {
+						padding: 0 0 0 10px;
+
+						label {
+							height: 30px;
+							line-height: 30px;
+						}
+
+						input {
+							margin: 8px 10px 0 0;
+						}
+					}
+
+					.x-points {
+						display: block;
+						font-size: 2em;
+						padding-top: 10px;
+					}
+				}
+
+				.x-buttons {
+					border-top: 1px solid @gray-dark;
+					padding-top: 20px;
+					.clearfix;
+
+					.btn {
+						font-size: 14px;
+					}
+				}
+			}
+
+			button.close {
+				margin-top: (@grid-gutter-width/2);
+				margin-right: (@grid-gutter-width/2);
+			}
+		}
+	}
+}
+
+.modal-open {
+
+	.modal {
+		overflow: auto!important;
+	}
+}
+
+.modal-footer {
+	padding: 15px 0;
+	text-align: right;
+	border-top: 1px solid black;
+	margin: 0 15px;
+}

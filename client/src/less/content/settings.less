@@ -1,0 +1,118 @@
+#settings {
+	.clearfix();
+
+	.form-group {
+		margin: 0;
+		.clearfix;
+
+		label {
+			margin: 0 0 0 25px;
+		}
+
+		input {
+			cursor: pointer;
+
+			&#email {
+				width: 100%;
+			}
+		}
+	}
+
+	h2 {
+		font-size: 24px;
+		margin-bottom: 0px;
+		display: block;
+		background-color: white;
+		margin-top: 0;
+		margin-right: -(@grid-gutter-width/2);
+		margin-left: -(@grid-gutter-width/2);
+		padding: (@grid-gutter-width/2);
+	}
+
+	.box {
+
+		.x-content {
+			padding: 0;
+		}
+	}
+
+	.x-nav {
+
+		li {
+			border-bottom: 1px solid @gray;
+		}
+
+		a {
+			&:extend(.webfont-icon all);
+			.webfont-angle-right();
+			padding: (@grid-gutter-width/2);
+			display: block;
+			color: inherit;
+			text-decoration: none;
+			position: relative;
+			line-height: 20px;
+
+			&.active, &:hover {
+				background-color: @gray-lighter;
+				color: @gray;
+			}
+
+			&:before {
+				position: absolute;
+				right: 0px;
+				font-size: 36px;
+				top: 15px;
+			}
+		}
+	}
+
+	.x-settings-content ul, .x-nav {
+		padding: 0;
+
+		li {
+			list-style-type: none;
+		}
+	}
+
+	.x-settings-content {
+		padding-bottom: (@grid-gutter-width/2);
+
+		.x-content {
+
+			ul {
+
+				li {
+					margin-bottom: @padding-base-horizontal;
+				}
+			}
+		}
+
+		ul {
+			padding: 20px;
+
+			li {
+
+				&.x-alert-box {
+					line-height: 20px;
+					margin: @padding-base-horizontal 0;
+				}
+
+				> span {
+					line-height: 20px;
+					display: inline-block;
+					vertical-align: middle;
+				}
+
+				&.norm {
+					line-height: 25px;
+					height: auto;
+				}
+
+				label {
+					font-weight: normal;
+					display: block;
+				}
+			}
+		}
+	}
+}

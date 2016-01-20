@@ -1,0 +1,114 @@
+[
+{
+"dateS" : "today",
+  "user" : {
+    "id" : 1,
+    "name" : "Benjamin Geißler",
+    "email" : "b.geissler89@gmail.com"
+  },
+  "today" : {
+    "status" : {
+      "stepsGoal" : 2345
+    },
+    "stepGoalPoints": 145,
+    "stepsPerPoint": 14
+  },
+  "yesterday" : {
+    "status" : {
+      "stepsDone" : 250,
+      "stepsGoal" : 3000
+    },
+    "stepGoalPoints": 145,
+    "points": {
+      "reached-step-goal": 50,
+      "completedChallenge": 150,
+      "completedWeeklyGoal": 150,
+      "completedQuiz": 150
+    }
+  }
+},
+{
+"dateS" : "today",
+  "user" : {
+    "id" : 1,
+    "name" : "Benjamin Geißler",
+    "email" : "b.geissler89@gmail.com"
+  },
+  "today" : {
+    "status" : {
+      "stepsGoal" : 23450
+    },
+    "stepGoalPoints": 1450,
+    "stepsPerPoint": 14
+  },
+  "yesterday" : {
+    "status" : {
+      "stepsDone" : 4500,
+      "stepsGoal" : 3000
+    },
+    "stepGoalPoints": 145,
+    "points": {
+      "reached-step-goal": 50,
+      "completedChallenge": 150,
+      "completedWeeklyGoal": 150,
+      "completedQuiz": 1500
+    }
+  }
+},
+{
+"dateS" : "today",
+  "user" : {
+    "id" : 1,
+    "name" : "Benjamin Geißler",
+    "email" : "b.geissler89@gmail.com"
+  },
+  "today" : {
+    "status" : {
+      "stepsGoal" : 234500
+    },
+    "stepGoalPoints": 14500,
+    "stepsPerPoint": 14
+  },
+  "yesterday" : {
+    "status" : {
+      "stepsDone" : 4500,
+      "stepsGoal" : 3000
+    },
+    "stepGoalPoints": 145,
+    "points": {
+      "reached-step-goal": 50,
+      "completedChallenge": 1337,
+      "completedWeeklyGoal": 97731,
+      "completedQuiz": 1500
+    }
+  }
+},
+{
+"dateS" : "today",
+  "user" : {
+    "id" : 1,
+    "name" : "Crazy Harry",
+    "email" : "b.geissler89@gmail.com"
+  },
+  "today" : {
+    "status" : {
+      "stepsGoal" : 234500000
+    },
+    "stepGoalPoints": 14500000,
+    "stepsPerPoint": 14
+  },
+  "yesterday" : {
+    "status" : {
+      "stepsDone" : 4500000,
+      "stepsGoal" : 3000
+    },
+    "stepGoalPoints": 145,
+    "points": {
+      "reached-step-goal": 50,
+      "completedChallenge": 1337,
+      "completedWeeklyGoal": 900007731,
+      "completedQuiz": 1500
+    }
+  }
+}
+]

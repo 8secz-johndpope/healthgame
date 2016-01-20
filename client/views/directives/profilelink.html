@@ -1,0 +1,6 @@
+<span ng-switch="showLink">
+	<a ng-switch-when="true" class="x-profilelink" href="{{buildProfileUrl(friendid)}}" ng-transclude>
+	</a>
+	<span ng-switch-when="false" class="x-profilelink" ng-transclude>
+	</span>
+</span>

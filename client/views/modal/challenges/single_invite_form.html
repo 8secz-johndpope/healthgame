@@ -1,0 +1,54 @@
+<form ng-submit="upsertChallenge()" name="inviteChallengeForm">
+	<div class="modal-body create" id="challengeInvite">
+		<div class="row">
+			<div class="modal-box">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<header>
+							<h2 class="modal-title">Freunde zur Challenge "{{challenge.name}}" einladen</h2>
+						</header>
+					</div>
+					<div class="col-md-12">
+						<div class="x-sidebar">
+							<div ng-if="isGlobalInputDisabled()" class="alert alert-danger">
+								Du kannst leider aktuell keine Freunde einladen. Das kann folgende Gründe haben:
+								<ul>
+									<li>Deine Freundesliste ist leer</li>
+									<li>Deine Freunde sind bereits in anderen Challenges aktiv</li>
+									<li>Du hast Deine ganzen Freunde bereits eingeladen</li>
+									<li>Du hast alle verfügbaren Plätze mit Einladungen besetzt</li>
+								</ul>
+							</div>
+							<div class="form-group">
+								<input
+									type="text"
+									ng-model="dummy"
+									ng-disabled="isGlobalInputDisabled()"
+									class="form-control"
+									typeahead="user.username for user in friends | filter:$viewValue"
+									typeahead-on-select="selectTeamMember($item, null); dummy = '';"
+								/>
+							</div>
+							<ul class="x-members">
+								<li ng-repeat="(key, team) in teams">
+									<p>{{team.members[0].username}}</p>
+									<a
+										ng-show="team.members[0].id !== undefined && team.members[0].id != currentUser.id"
+										ng-click="removeTeamMember(team.members[0].id, team)"
+										class="btn btn-danger pull-right"
+									>entfernen</a>
+								</li>
+							</ul>
+							<div class="x-buttons">
+								<button type="button" ng-click="$dismiss('back')" class="btn btn-default btn-back">zurück</button>
+								<button type="button" ng-click="$dismiss('cancel')" class="btn btn-default">Abbrechen</button>
+								<button type="submit" class="pull-right btn btn-primary">starten</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

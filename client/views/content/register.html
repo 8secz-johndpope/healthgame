@@ -1,0 +1,20 @@
+<div id="register">
+	<div class="box">
+		<header>
+			<h1>Daten vervollständigen</h1>
+		</header>
+		<div class="x-content">
+			<form ng-submit="addUser()" ng-controller="RegisterController" name="registerForm">
+				<div class="form-group">
+					<label for="username">E-Mail-Adresse</label>
+					<input type="email" class="form-control" id="email" placeholder="E-Mail" ng-required="true" ng-model="user.email"/>
+				</div>
+				<div class="checkbox">
+					<input id="log-in" name="conditions" type="checkbox" ng-true-value="1" ng-false-value="0" ng-required="true" ng-model="user.conditions">
+					<label for="log-in">Ich habe die Hinweise zu <a href="#/datasecurity" target="_blank" title="Datenschutz">Datenschutz</a> und <a href="#/tos" target="_blank" title="Nutzungsbedingungen">Nutzungsbedingungen</a> gelesen und stimme deren Inhalt zu.</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Daten vervollständigen</button>
+			</form>
+		</div>
+	</div>
+</div>

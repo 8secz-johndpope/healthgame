@@ -1,0 +1,167 @@
+{
+	"_meta": {
+		"sources": [
+			"loopback/common/models",
+			"loopback/server/models",
+			"../common/models",
+			"./models"
+		],
+		"mixins": [
+			"loopback/common/mixins",
+			"loopback/server/mixins",
+			"../common/mixins",
+			"./mixins"
+		]
+	},
+	"User": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"Setup": {
+		"dataSource": "db"
+	},
+	"AccessToken": {
+		"dataSource": "db",
+		"public": false
+	},
+	"ACL": {
+		"dataSource": "db",
+		"public": false
+	},
+	"RoleMapping": {
+		"dataSource": "mysqlDs",
+		"public": false
+	},
+	"Role": {
+		"dataSource": "mysqlDs",
+		"public": false
+	},
+	"DailyStatus": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"Quiz": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"Challenge": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"WeeklyStatus": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"ChallengeInvite": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"ChallengeTeam": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"PointLog": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"BadgeLog": {
+		"dataSource": "mysqlDs",
+		"public": false
+	},
+	"LevelLog": {
+		"dataSource": "mysqlDs",
+		"public": false
+	},
+	"Level": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"NotificationLog": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"UserGoal": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"WeeklyGoal": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"WeeklyGoalCategory": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"Friendship": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"StepsWeekly": {
+		"dataSource": "mysqlDs",
+		"public": false
+	},
+	"UserRank": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"UserQuizRank": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"UserStepRank": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"UserGoalRank": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"UserLevel": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"Email": {
+		"dataSource": "mail",
+		"public": false
+	},
+	"UserGoalStats": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"UserGoalStatus": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"ChallengeStats": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"UserPoints": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"Content": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"ChallengeTeamMember": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"ChallengeTeamMembers": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"TipRating": {
+		"dataSource": "mysqlDs",
+		"public": true
+	},
+	"FitbitData": {
+		"dataSource": "mysqlDs",
+		"public": false
+	},
+	"FitbitDevice": {
+		"dataSource": "mysqlDs",
+		"public": false
+	}
+}

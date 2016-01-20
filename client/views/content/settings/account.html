@@ -1,0 +1,33 @@
+<div class="box x-gray-light">
+	<header>
+		<h1>Account</h1>
+	</header>
+	<div class="x-content">
+		<form ng-submit="doDeleteAccount()" ng-controller="SettingsController" name="deleteAccountForm">
+			<ul>
+				<li>
+					Du willst uns schon verlassen? Wie schade.
+				</li>
+				<li>
+					<div class="form-group">
+						<div class="pull-left">
+							<input id="delete-account" name="deleteAccount" type="checkbox" ng-required="true" ng-true-value="1" ng-false-value="0" ng-model="deleteAccount">
+						</div>
+						<div>
+							<label for="delete-account">Ja, ich möchte meinen Account unwiderruflich löschen.</label>
+						</div>
+					</div>
+				</li>
+				<li class="norm">
+					Diese Aktion generiert im Hintergrund eine E-Mail mit einem Link, den Du noch zusätzlich anklicken musst, um deinen Account auch wirklich zu löschen.
+				</li>
+				<li ng-if="success !== undefined" class="x-alert-box">
+					<div class="alert ng-class: {'alert-success': success, 'alert-danger': !success}">{{ message }}</div>
+				</li>
+				<li>
+					<button type="submit" ng-disabled="!updateSettings" class="btn btn-primary">Account löschen</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>

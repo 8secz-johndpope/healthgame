@@ -1,0 +1,53 @@
+<div id="challenges" ng-show="$root.isLoggedIn">
+	<ul class="nav nav-tabs">
+		<li role="presentation" ui-sref-active-eq="active"><a ui-sref="challenges" ng-click="switchActual()">Aktuelle</a></li>
+		<li role="presentation" ui-sref-active-eq="active"><a ui-sref="challenges.expired" ng-click="switchExpired()">Abgelaufene</a></li>
+		<li role="presentation" ui-sref-active-eq="active"><a ui-sref="challenges.invites" ng-click="switchInvites()">Einladungen</a></li>
+	</ul>
+
+	<div class="row" ng-if="(isActual && !ownChallenge && !firstChallenge && !secondChallenge && !challenges.length) || (!isActual && !challenges.length)">
+		<div class="col-sm-6 col-xs-12 col-md-3 place-middle x-no-challenge">
+			<div class="box">
+				<div class="x-content">
+					Es gibt hier aktuell keine Challenges für Dich.
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-if="isActual">
+		<div class="col-sm-6 col-xs-12 col-md-6" ng-if="ownChallenge">
+			<div data-x-challenge data-challenge="ownChallenge"></div>
+		</div>
+
+		<div class="col-sm-6 col-xs-12 col-md-3" ng-if="firstChallenge">
+			<div data-x-challenge data-challenge="firstChallenge"></div>
+		</div>
+
+		<div class="col-sm-6 col-xs-12 col-md-3" ng-if="secondChallenge">
+			<div data-x-challenge data-challenge="secondChallenge"></div>
+		</div>
+	</div>
+
+	<div class="row" ng-repeat="chunk in challenges">
+		<div
+			class="col-sm-6 col-xs-12 col-md-3"
+			ng-repeat="(key, challenge) in chunk">
+			<div data-x-challenge data-challenge="challenge"></div>
+		</div>
+	</div>
+
+	<div class="row" ng-if="isActual && !ownChallenge">
+		<div class="col-sm-3 col-xs-12 col-md-3 place-middle">
+			<div class="x-add-challenge" ng-click="addChallenge()">
+				<div class="box">
+					<div class="x-content">
+						<p>
+							<span>Erstelle eine neue Challenge</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

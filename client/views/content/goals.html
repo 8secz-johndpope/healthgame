@@ -1,0 +1,11 @@
+<div id="goals" ng-show="$root.isLoggedIn">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-tabs">
+				<li role="presentation" ui-sref-active-eq="active"><a ui-sref="goals"         ng-click="switchCurrent()">Aktuelle</a></li>
+				<li role="presentation" ui-sref-active-eq="active"><a ui-sref="goals.expired" ng-click="switchExpired()">Abgelaufene</a></li>
+			</ul>
+			<ng-include src="'views/content/goals/'+subtemplate"></ng-include>
+		</div>
+	</div>
+</div>

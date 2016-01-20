@@ -1,0 +1,14 @@
+<div class="{{ class }}">
+	<header>
+		<h1 ng-switch="isown">
+			<a ng-switch-when="true" ui-sref="steps">{{ title }}</a>
+			<span ng-switch-when="false">{{ title }}</span>
+		</h1>
+	</header>
+	<div class="x-content">
+		<div data-x-progress-bar data-min="0" data-max="stepsGoal" data-current="stepsDone"></div>
+		<div class="x-total-steps">
+			{{ flagText }}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="{{ class }}">
+	<header>
+		<h1>{{ title }}</h1>
+	</header>
+	<div class="x-content x-has-show-all">
+		<ul class="x-list">
+			<li class="x-level" ng-click="$root.showJourneyMap()">
+				{{ user.level[0].name }}
+				<span class="x-subline">Level {{ user.level[0].id }} ({{ user.userRank.points | number }} Punkte)</span>
+			</li>
+			<li class="x-rank" ui-sref="leaderboard">
+				Rang {{ user.userRank.rank }}
+				<span class="x-subline">von {{ userCount }}</span>
+			</li>
+			<li class="x-awards">
+				<div class="row">
+					<ul class="x-badges">
+						<li class="no-badges col-md-12" ng-if="!user.badgeLogs.length">
+							<p>Sei weiter aktiv, damit Du hier Deine Erfolge siehst.</p>
+						</li>
+						<li ng-repeat="(badgeKey, badgeValue) in user.badgeLogs | orderBy:'-reachedAt' | limitTo:3" class="col-md-4  col-sm-6 col-xs-4" >
+							<div class="x-badge">
+								<span class="x-badge-icon x-badges-small-{{badgeValue.type | lowercase}}"></span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<a ng-click="showAchievements()" class="x-show-all">Alle ansehen</a>
+	</div>
+</div>

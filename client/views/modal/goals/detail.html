@@ -1,0 +1,71 @@
+<div id="goalModal" class="modal-body ng-class: {'x-finished': curGoal.finished}">
+	<div class="row">
+		<div class="modal-box x-general">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<header>
+						<h2>{{curGoal.goal.title}}</h2>
+					</header>
+					<div class="x-content">
+						<div class="block">
+							<h3>{{curGoal.goal.category.parent.name}} / {{curGoal.goal.category.name}}</h3>
+							<p>{{curGoal.goal.description}}</p>
+							<div class="x-progress">
+								<span ng-if='curGoal.finished' ng-repeat="n in getNumber(curGoal.status.totalDays) track by $index"
+									class="x-day ng-class: {'x-done': (curGoal.completedDays > $index)}"></span>
+								<span ng-if='!curGoal.finished && curGoal.status.daysLeft >= 0' ng-repeat="n in getNumber(curGoal.status.totalDays) track by $index"
+									class="x-day
+									       ng-class: {
+												'x-past': (curGoal.status.totalDays  - curGoal.status.daysLeft  >  $index + 1),
+									      	'x-today': (curGoal.status.totalDays - curGoal.status.daysLeft === $index + 1)
+											 }"
+								></span>
+							</div>
+							<div class="x-footer" ng-if="curGoal.finished">
+								Du hast dein Ziel an {{curGoal.completedDays ? curGoal.completedDays : 0}} / {{curGoal.status.totalDays ? curGoal.status.totalDays : 0}} Tagen geschafft.
+								<strong>insgesamt {{curGoal.pointLog.points}}</strong>
+							</div>
+							<div class="x-footer x-progress-points-hint" ng-if="!curGoal.finished && curGoal.status.daysLeft >= 0">
+								Pro erfolgreichen Tag bekommst du <strong>50</strong>
+							</div>
+						</div>
+						<div class="block">
+							<h3>Dein Tipp</h3>
+							<div class="">
+								<div ng-if="!curGoal.tip">
+									Bislang kein Tipp von dir vorhanden.
+								</div>
+								{{curGoal.tip}}
+
+							</div>
+							<div class="x-footer" ng-if="curGoal.tip">
+								Rating
+								<div class="x-votes">
+									<a class="x-upvote   ng-class: {'x-hasVote': curGoal.hasVote === 'up'  }" ng-click="vote(curGoal.id, true)">{{curGoal.tipRating.upvotes}}</a>
+									<a class="x-downvote ng-class: {'x-hasVote': curGoal.hasVote === 'down'}" ng-click="vote(curGoal.id, false)">{{curGoal.tipRating.downvotes}}</a>
+								</div>
+							</div>
+						</div>
+						<div class="block">
+							<h3>Tipps von Mitspielern</h3>
+							<div class="ng-class: {'x-list': tipsAvailable}">
+								<div ng-if="!tipsAvailable">
+									Bislang keine Tipps von anderen Mitspielern vorhanden.
+									<span ng-if="!curGoal.tip">Sei der erste, der einen Tipp abgibt.</span>
+								</div>
+								<div class="x-tip" ng-repeat="goal in tipGoals">
+									{{goal.tip}}
+									<div class="x-votes">
+										<a class="x-upvote   ng-class: {'x-hasVote': goal.hasVote === 'up'  }" ng-click="vote(goal.id, true)">{{goal.tipRating.upvotes}}</a>
+										<a class="x-downvote ng-class: {'x-hasVote': goal.hasVote === 'down'}" ng-click="vote(goal.id, false)">{{goal.tipRating.downvotes}}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

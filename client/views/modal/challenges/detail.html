@@ -1,0 +1,75 @@
+<div class="modal-body" id="challenge-detail">
+	<div class="row">
+		<div class="modal-box">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<header>
+						<h2>Status</h2>
+					</header>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<div class="x-sidebar">
+						<dl class="x-challenge-info">
+							<dt>Name der Challenge</dt>
+							<dd>{{challenge.name}}</dd>
+							<dt>Challenge-Typ</dt>
+							<dd>{{challenge.type === 'single' ? 'Einzel' : 'Gruppen'}}challenge</dd>
+							<dt>Länge der Challenge</dt>
+							<dd>Tag {{today}}/5</dd>
+							<dt>max. Punkte zu gewinnen</dt>
+							<dd class="x-achievements">
+								<p class="x-bubbles">
+									<span ng-if="challenge.teams.length > 1">
+										<span class="x-bubble">1</span>
+										<span>300</span>
+									</span>
+									<span ng-if="challenge.teams.length > 2">
+										<span class="x-bubble">2</span>
+										<span>100</span>
+									</span>
+									<span ng-if="challenge.teams.length > 3">
+										<span class="x-bubble">3</span>
+										<span>50</span>
+									</span>
+								</p>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-8">
+					<div class="x-content">
+						<div ng-if="today" class="x-chart" google-chart chart="chartObject" style="{{cssStyle}}"></div>
+						<div class="x-winners-podium x-count-{{challenge.teams.length}}" ng-if="isExpired && challenge.teams.length > 1">
+							<span class="x-bubble" ng-if="challenge.teams.length > 1">1</span>
+							<span class="x-bubble" ng-if="challenge.teams.length > 2">2</span>
+							<span class="x-bubble" ng-if="challenge.teams.length > 3">3</span>
+						</div>
+					</div>
+					<dl ng-if="challenge.perTeam > 1">
+						<dt  class="x-team-overview">
+							<div class="col-xs-12 col-md-12">Teamübersicht</div>
+						</dt>
+						<dd>
+							<div ng-repeat="(key,team) in challenge.teams">
+								<div class="col-xs-12 col-md-6">
+									<dl class="x-member-list">
+										<dd>
+											<u>Team {{key + 1}}</u>
+										</dd>
+										<dd ng-repeat="member in team.members" class="x-team-members">
+											<span data-x-profile-link class="" data-friendid="member.user.id">
+												{{member.user.username}}{{$last ? '' : ', '}}
+											</span>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

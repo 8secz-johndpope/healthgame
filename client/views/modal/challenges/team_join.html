@@ -1,0 +1,56 @@
+<form ng-submit="upsertChallenge()" name="joinChallengeForm">
+	<div class="modal-body" id="challengeJoin">
+		<div class="row">
+			<div class="modal-box x-gray-lighter">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<header>
+							<h2 class="modal-title">Zur Challenge "{{challenge.name}}" beitreten</h2>
+						</header>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="x-sidebar">
+							<div class="row">
+								<div
+									ng-repeat="(key, team) in teams"
+									class="x-team ng-class: {
+										'col-sm-6': (challenge.numTeams === 2),
+										'col-sm-4': (challenge.numTeams === 3),
+										'col-sm-3': (challenge.numTeams === 4),
+										'col-sm-2': (challenge.numTeams === 5)
+									}">
+									<h3>{{team.title}}</h3>
+									<ul class="x-members">
+										<li ng-repeat="member in team.members" ng-switch="!!member.id">
+											<span ng-switch-when="true">
+												<span data-x-profile-link data-friendid="member.id">
+													<span class="x-username">{{member.username}}</span><br />
+													<span class="x-rank">Rang {{member.userRank.rank}}</span>
+												</span>
+											</span>
+											<a
+												ng-switch-when="false"
+												ng-click="joinTeam(team)"
+												ng-disabled="isChallengee"
+												class="btn btn-xs btn-success"
+												title="beitreten"
+												>freier Platz</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="x-buttons">
+										<button type="button" ng-click="$dismiss('cancel')" class="btn btn-default">Schließen</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

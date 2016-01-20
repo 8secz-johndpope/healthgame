@@ -1,0 +1,61 @@
+{
+	"name": "Level",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"name": {
+			"type": "string",
+			"required": true,
+			"length": 200
+		},
+		"pointsStart": {
+			"type": "number",
+			"required": true
+		},
+		"pointsEnd": {
+			"type": "number",
+			"required": true
+		},
+		"lat": {
+			"type": "number",
+			"required": true
+		},
+		"lng": {
+			"type": "number",
+			"required": true
+		},
+		"nextId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"levelLogs": {
+			"type": "hasMany",
+			"model": "LevelLog",
+			"foreignKey": "levelId"
+		},
+		"next": {
+			"type": "belongsTo",
+			"model": "Level",
+			"foreignKey": "nextId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "find"
+		}
+	],
+	"methods": []
+}

@@ -1,0 +1,52 @@
+<div id="goalModal" class="modal-body create">
+	<div class="row">
+		<div class="modal-box">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<header>
+						<h2>{{curGoal.goal.title}}</h2>
+					</header>
+					<div class="x-content">
+						<div class="block">
+							<h3>{{curGoal.goal.category.parent.name}} / {{curGoal.goal.category.name}}</h3>
+							<div>{{curGoal.goal.description}}</div>
+						</div>
+					<div class="block">
+						<h3>Ziel</h3>
+						<p>{{users && users.length > 0 ? users.length : 0}} {{users.length === 1 ? 'Person verfolgt' : 'Personen verfolgen '}} dieses Ziel</p>
+						<ul class="user-list">
+							<li class="x-tip col-xs-12 col-sm-6 col-md-3" ng-repeat="user in users">
+								<span data-x-profile-link data-friendid="user.id">
+									{{user.username}}
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="block">
+						<h3>Tipps von Mitspielern</h3>
+						<div ng-if="!tipGoals.length">
+							Bislang keine Tipps vorhanden.
+						</div>
+						<div class="x-tip" ng-repeat="goal in tipGoals track by $index">
+							<p>
+								<span data-x-profile-link class="" data-friendid="user.id">
+									<strong>{{user.username}}</strong>
+								</span>
+							</p>
+							<p>{{goal.tip}}</p>
+							<div class="x-votes">
+								<a class="x-upvote   ng-class: {'x-hasVote': goal.hasVote === 'up'  }" ng-click="vote(goal.id, true)">{{goal.tipRating.upvotes}}</a>
+								<a class="x-downvote ng-class: {'x-hasVote': goal.hasVote === 'down'}" ng-click="vote(goal.id, false)">{{goal.tipRating.downvotes}}</a>
+							</div>
+						</div>
+						<div class="x-footer x-toggle" ng-if="goals.length > 3">
+							<a class="x-all" ng-click="toggleTips(true)">Alle ansehen</a>
+							<a class="x-less" ng-click="toggleTips(false)">weniger anzeigen</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

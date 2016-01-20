@@ -1,0 +1,81 @@
+#userhome {
+	@media (max-width: @screen-xs-max) {
+		.status {
+			display: none;
+		}
+	}
+
+	.box {
+		&.x-weekly-goals a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.x-notifications {
+			min-height: 383px;
+
+			a {
+				color: #1c9ad7;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			.x-counter {
+				background: #ddd;
+				display: block;
+				position: absolute;
+				border-radius: 15px;
+				right: 0;
+				top: 50%;
+				line-height: 30px;
+				margin-top: -15px;
+			}
+			header {
+				position: relative;
+				padding-right: (@padding-large-vertical * 8);
+
+				.x-counter {
+					font-size: 18px;
+					line-height: 40px;
+					padding: 0 15px;
+					right: 20px;
+					border-radius: 20px;
+					background: @blue;
+					color: #fff;
+					margin-top: -20px;
+				}
+			}
+			li.x-notification {
+
+				img {
+					float: left;
+					margin-right: (@padding-large-vertical * 2);
+					width: 60px;
+					height: auto;
+				}
+				.x-counter {
+					&:extend(.webfont-icon all);
+					.webfont-smile-o();
+					line-height: 30px;
+					text-align: right;
+					padding: 0 10px 0 25px;
+					min-width: 51px;
+					right: (@padding-large-vertical * 2);
+
+					&:before {
+						position: absolute;
+						left: 6px;
+						font-size: 1.2em;
+					}
+				}
+			}
+			.x-content {
+				padding-top: 0;
+			}
+		}
+	}
+}
+
+

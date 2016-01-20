@@ -1,0 +1,67 @@
+<div id="leaderboard">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8">
+			<div class="box leaderboard">
+				<header>
+					<h1>Bestenliste</h1>
+					<ui-select id="rankingSelect" ng-model="rankings.current" theme="bootstrap" search-enabled="false">
+						<ui-select-match>{{$select.selected.title}}</ui-select-match>
+						<ui-select-choices repeat="ranking in rankings.sources">
+							<div ng-bind-html="ranking.title"></div>
+						</ui-select-choices>
+					</ui-select>
+				</header>
+				<div class="x-content">
+					<ul class="x-list x-leaderboard">
+						<li ng-repeat="row in ranking">
+							<div class="hidden-md hidden-lg">
+								<div class="col-xs-2">
+									<span class="x-counter">{{row.rank}}</span>
+								</div>
+								<div class="col-xs-2">
+									<img class="x-avatar" ng-src="{{ row.user.avatar100 | avatar100 }}" alt="{{row.user.username}}" />
+								</div>
+								<div class="col-xs-8">
+									<ul>
+										<li>
+											<span data-x-profile-link data-friendid="row.user.id">
+												<strong class="x-username">{{row.user.username}}</strong>
+											</span>
+										</li>
+										<li>
+											<span>{{row.points | number}} Punkte</span>
+											<span class="x-userlevel" ng-show="!!row.user.level[0]">Level {{row.user.level[0].id}}</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="hidden-sm hidden-xs">
+								<div class="col-xs-1">
+									<span class="x-counter">{{row.rank}}</span>
+								</div>
+								<div class="col-xs-2">
+									<img class="x-avatar" ng-src="{{ row.user.avatar100 | avatar100 }}" alt="{{row.user.username}}" />
+								</div>
+								<div class="col-xs-3">
+									<span data-x-profile-link data-friendid="row.user.id">
+										<strong class="x-username">{{row.user.username}}</strong>
+									</span>
+								</div>
+								<div class="col-xs-3">
+									<span>{{row.points | number}} Punkte</span>
+								</div>
+								<div class="col-xs-3">
+									<span class="x-userlevel" ng-show="!!row.user.level[0]">Level {{row.user.level[0].id}}</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<pagination data-total-items="userCount" data-ng-model="$parent.currentPage" data-num-pages="numVisiblePages" data-items-per-page="perPage" data-max-size="maxSize" data-previous-text="&lsaquo;" data-next-text="&rsaquo;" data-first-text="&laquo;" data-last-text="&raquo;"></pagination>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4 x-sidebar">
+			<div data-x-status class="box x-status" data-userid="getCurrentUserId()" title="Status"></div>
+		</div>
+	</div>
+</div>

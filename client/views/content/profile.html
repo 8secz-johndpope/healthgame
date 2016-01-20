@@ -1,0 +1,161 @@
+<div ng-if="resolved && !user">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="box">
+			<header>
+				<h1>Das Nutzerprofil konnte nicht aufgerufen werden!</h1>
+			</header>
+			<div class="x-content x-has-show-all">
+				<a class="x-show-all" ui-sref="start">zur Startseite</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="profile" ng-if="resolved && !!user">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<div class="box user">
+				<header>
+					<h1>User</h1>
+				</header>
+				<div class="x-content x-has-show-all">
+					<div class="user-info">
+						<img src="{{ user.avatar100 | avatar100 }}" alt="{{user.username}}" />
+						<span>{{user.username}}</span>
+					</div>
+					<a class="x-show-all" ui-sref="settings.general" ng-if="isOwn">Profil editieren</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-3 col-md-3">
+			<div id="levels">
+				<div class="box x-blue">
+					<header>
+						<h1 ng-switch="isOwn">
+							<a ng-switch-when="true" ng-click="showJourneyMap()">Level</a>
+							<span ng-switch-when="false">Level</span>
+						</h1>
+					</header>
+					<div class="x-content">
+						{{level.name}}<br />
+						Level {{level.id}}<br />
+						{{user.userRank.points | number}} Punkte
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-3 col-md-3">
+			<div class="box x-blue">
+				<header>
+					<h1 ng-switch="isOwn">
+						<a ng-switch-when="true" title="Gehe zur Rangliste" ui-sref="leaderboard">Rang</a>
+						<span ng-switch-when="false">Rang</span>
+					</h1>
+				</header>
+				<div class="x-content">
+					Platz {{user.userRank.rank}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-8">
+			<div data-x-steps data-userid="user.id" data-isown="isOwn" title="Schritte Heute" class="box todays-steps"></div>
+		</div>
+
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<div class="box x-red">
+				<header>
+					<h1>Beste Woche</h1>
+				</header>
+				<div class="x-content">
+					{{bestWeekSteps || "Keine"}} Schritte gelaufen
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-3 col-md-3">
+			<div class="box x-red">
+				<header>
+					<h1>Bester Tag</h1>
+				</header>
+				<div class="x-content">
+					{{bestDaysteps || "Keine"}} Schritte gelaufen
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-3 col-md-3">
+			<div class="box x-teal">
+				<header>
+					<h1><a title="Gehe zu den Quizzes" ui-sref="quizzes">Quizzes</a></h1>
+				</header>
+				<div class="x-content">
+					Durchschnittlich {{ quizStats.correctAnswers / quizStats.questions * 100 | number:0 }}% richtig beantwortet.
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-3 col-md-3">
+			<div class="box x-orange">
+				<header>
+					<h1><a title="Gehe zu den Challenges" ui-sref="challenges">Challenges</a></h1>
+				</header>
+				<div class="x-content">
+					Hat an {{challangeCount}} Challenge{{challangeCount>1 ? "s": ""}} teilgenommen.
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-3 col-md-3">
+			<div class="box x-green goals">
+				<header>
+					<h1><a title="Gehe zu den Wochenzielen" ui-sref="goals">Ziele</a></h1>
+				</header>
+				<div class="x-content">
+					<ul ng-if="userGoals.length">
+						<li ng-repeat="userGoal in userGoals"><a title="Ziel öffnen" ui-sref="goals.detail({id: userGoal.id})">{{userGoal.goal.title}}</a></li>
+					</ul>
+					<p ng-if="!userGoals.length">Hat aktuell keine Wochenziele.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-8">
+			<div class="box activities">
+				<header>
+					<h1>Aktivität</h1>
+				</header>
+				<div class="x-content x-has-show-all">
+					<div data-x-notifications data-user-id="user.id" data-page="1" data-page-size="4" data-include-friends="false"></div>
+					<a class="x-show-all" ng-click="showAllNotifications()">Alle ansehen</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<div class="box badges">
+				<header>
+					<h1>Auszeichnungen</h1>
+				</header>
+				<div class="x-content x-has-show-all">
+					<ul class="x-badges row">
+						<li class="no-badges col-md-12" ng-if="!user.badgeLogs.length">
+							<p>Sei weiter aktiv, damit du hier deine Erfolge siehst.</p>
+						</li>
+						<li ng-repeat="(badgeKey, badgeValue) in user.badgeLogs | orderBy:'-reachedAt' | limitTo:3" class="col-md-4  col-sm-6 col-xs-4" >
+							<div class="x-badge">
+								<span class="x-badge-icon x-badges-small-{{badgeValue.type | lowercase}}"></span>
+							</div>
+						</li>
+					</ul>
+					<a ng-click="showAchievements()" class="x-show-all">Alle ansehen</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

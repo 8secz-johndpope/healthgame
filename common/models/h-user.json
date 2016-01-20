@@ -1,0 +1,286 @@
+{
+	"name": "HUser",
+	"base": "User",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true,
+		"realmRequired": true
+	},
+	"properties": {
+		"name": {
+			"type": "string"
+		},
+		"fitbitUserId": {
+			"type": "string"
+		},
+		"fitbitAccessToken": {
+			"type": "string"
+		},
+		"fitbitRefreshToken": {
+			"type": "string"
+		},		
+		"notifyDaily": {
+			"type": "boolean"
+		},
+		"privacyFriend": {
+			"type": "boolean"
+		},
+		"privacyPublic": {
+			"type": "boolean"
+		},
+		"avatar100": {
+			"type": "string"
+		},
+		"avatar150": {
+			"type": "string"
+		},
+		"deleteToken": {
+			"type": "string"
+		},
+		"deleted": {
+			"type": "boolean"
+		},
+		"notificationLogPositionId": {
+			"type": "number",
+			"required": false
+		}
+	},
+	"hidden": ["password", "fitbitUserId", "fitbitAccessToken", "fitbitRefreshToken"],
+	"validations": [],
+	"relations": {
+		"roles": {
+			"type": "hasMany",
+			"model": "Role",
+			"foreignKey": "principalId",
+			"through": "RoleMapping"
+		},
+		"dailyStatuses": {
+			"type": "hasMany",
+			"model": "DailyStatus",
+			"foreignKey": "userId"
+		},
+		"weeklyStatuses": {
+			"type": "hasMany",
+			"model": "WeeklyStatus",
+			"foreignKey": "userId"
+		},
+		"challenges": {
+			"type": "hasMany",
+			"model": "Challenge",
+			"foreignKey": "userId"
+		},
+		"challengeInvites": {
+			"type": "hasMany",
+			"model": "ChallengeInvite",
+			"foreignKey": "userId"
+		},
+		"invitedChallenges": {
+			"type": "hasMany",
+			"model": "Challenge",
+			"through": "ChallengeInvite"
+		},
+		"notificationLogs": {
+			"type": "hasMany",
+			"model": "NotificationLog",
+			"foreignKey": "userId"
+		},
+		"userGoals": {
+			"type": "hasMany",
+			"model": "UserGoal",
+			"foreignKey": "userId"
+		},
+		"badgeLogs": {
+			"type": "hasMany",
+			"model": "BadgeLog",
+			"foreignKey": "userId"
+		},
+		"pointLogs": {
+			"type": "hasMany",
+			"model": "PointLog",
+			"foreignKey": "userId"
+		},
+		"levelLogs": {
+			"type": "hasMany",
+			"model": "LevelLog",
+			"foreignKey": "userId"
+		},
+		"userRank": {
+			"type": "hasOne",
+			"model": "UserRank",
+			"foreignKey": "userId"
+		},
+		"userLevel": {
+			"type": "hasOne",
+			"model": "UserLevel",
+			"foreignKey": "userId"
+		},
+		"userPoints": {
+			"type": "hasOne",
+			"model": "UserPoints",
+			"foreignKey": "userId"
+		},
+		"level": {
+			"type": "hasMany",
+			"model": "Level",
+			"foreignKey": "userId",
+			"through": "UserLevel"
+		},
+		"friendPrime": {
+			"type": "hasMany",
+			"model": "Friendship",
+			"foreignKey": "userId"
+		},
+		"friendSecond": {
+			"type": "hasMany",
+			"model": "Friendship",
+			"foreignKey": "friendId"
+		},
+		"challengeParticipations": {
+			"type": "hasMany",
+			"through": "ChallengeTeamMembers",
+			"foreignKey": "userId",
+			"model": "Challenge"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "__get__dailyStatuses"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__count__dailyStatuses"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__weeklyStatuses"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__challenges"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "__count__challenges"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__challengeInvites"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__invitedChallenges"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__pointLogs"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__levelLogs"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__badgeLogs"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "__get__roles"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "upsert"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "timeline"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "bestWeekSteps"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "quizStats"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "deleteAccount"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "__get__userGoals"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "__get__userRank"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "friendShips"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "find"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "count"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "recommendedFriends"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "findById"
+		}
+	],
+	"methods": []
+}

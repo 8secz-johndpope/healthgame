@@ -1,0 +1,20 @@
+{
+	"name": "FitbitData",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"gender": {
+			"type": "string"
+		},
+		"dateOfBirth": {
+			"type": "string"
+		},
+
+		"timezone": {
+			"type": "string"
+		}
+	}
+}

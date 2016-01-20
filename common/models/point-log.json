@@ -1,0 +1,53 @@
+{
+	"name": "PointLog",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"userId": {
+			"type": "number"
+		},
+		"points": {
+			"type": "number",
+			"required": true
+		},
+		"dayAt": {
+			"type": "date",
+			"required": true,
+			"dataType": "date"
+		},
+		"type": {
+			"type": "string",
+			"required": true,
+			"length": 32
+		},
+		"createdAt": {
+			"type": "date",
+			"required": true
+		}
+	},
+	"validations": [],
+	"relations": {
+		"user": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "userId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "findById"
+		}
+	],
+	"methods": []
+}

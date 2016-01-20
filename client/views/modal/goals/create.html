@@ -1,0 +1,58 @@
+<form ng-submit="upsertGoal()" name="createGoalForm">
+	<div class="modal-body create" id="goalModal">
+		<div class="row">
+			<div class="modal-box">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<header>
+							<h2 class="modal-title">Neues Ziel</h2>
+						</header>
+					</div>
+					<div class="col-md-12">
+						<div class="x-sidebar">
+							<div class="form-group">
+								<label for="parentCategory">Kategorie</label>
+								<select class="form-control" id="parentCategory" ng-change="changeParentCat()"
+									ng-options="n as n.name for n in parentCategories" ng-model="selectedParent"></select>
+								<div class="x-description">{{parentDescription}}</div>
+							</div>
+							<div class="form-group">
+								<label for="subCategory">Unterkategorie</label>
+								<select class="form-control" id="subCategory" ng-change="changeSubCat()"
+									ng-options="n as n.name for n in subCategories" ng-model="selectedSub"></select>
+								<div class="x-description">{{subDescription}}</div>
+							</div>
+							<div class="form-group">
+								<label for="goal">Ziel</label>
+								<select class="form-control" id="goal" ng-change="changeGoal()"
+									ng-options="n as n.title for n in goals" ng-model="selectedGoal"></select>
+								<div class="x-description">{{goalDescription}}</div>
+							</div>
+							<div class="form-group x-duration">
+
+								<div class="hidden-xs hidden-sm">
+									<label for="duration">An wieviel Tagen möchtest du das Ziel verfolgen?</label>
+									<input id="duration" type="range" min="1" max="7" value="1" ng-change="changeDuration()" ng-model="selectedDuration" />
+									<div class="x-ticks">
+										<div class="x-values">
+											<span>{{selectedDuration}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="hidden-md hidden-lg">
+								<label for="duration">An wieviel Tagen möchtest du das Ziel verfolgen?</label>
+									<select class="form-control" id="" ng-change="" ng-options="" ng-model=""></select>
+								</div>
+							</div>
+							<div class="x-buttons">
+								<button type="button" ng-click="$dismiss('cancel')" class="btn btn-default">Abbrechen</button>
+								<button type="submit" class="pull-right btn btn-primary ng-class: {'disabled': !isSubmitEnabled}">Festlegen</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

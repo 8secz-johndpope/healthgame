@@ -1,0 +1,19 @@
+{
+  "master": true,
+  "queue": {
+    "host":     "127.0.0.1",
+    "port":     11300,
+    "tube":     "jobs",
+    "priority": 5,
+    "delay":    0,
+    "ttr":      60
+  },
+  "listen": {
+    "host": "127.0.0.1",
+    "port": 8080
+  },
+  "oauth2": {
+    "clientId":     "<OAuth2 client ID here>",
+    "clientSecret": "<OAuth2 client secret here>"
+  }
+}

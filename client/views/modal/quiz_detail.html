@@ -1,0 +1,126 @@
+<form action="">
+	<div class="modal-body" id="quiz-detail">
+		<div class="row">
+			<div class="modal-box">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<header>
+							<h2 class="modal-title">{{quiz.title}}</h2>
+						</header>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-md-5">
+						<div class="x-sidebar">
+							<!-- <p>{{quiz.description}}</p> -->
+							<div class="x-score">
+								<h3 class="text-center good" ng-if="total">
+									<span>Gut gemacht</span>
+								</h3>
+								<h3 class="text-center">Du hast {{total}}/3 Fragen richtig beantwortet und bekommst</h3>
+								<p class="x-points text-center webfont-icon webfont_star"></p>
+								<p class="x-points text-center"> {{points}} Punkte</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-7 col-md-7">
+						<div class="x-content">
+							<div class="x-question-block">
+								<h3>{{quiz.question1}}</h3>
+								<div ng-class="{'bg-success': (solution.first == 1), 'bg-danger': (solution.first != 1 && answer.first == 1)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.first == 1">
+										<label>{{quiz.answer1A}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.first == 2), 'bg-danger': (solution.first != 2 && answer.first == 2)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.first == 2">
+										<label>{{quiz.answer1B}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.first == 3), 'bg-danger': (solution.first != 3 && answer.first == 3)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.first == 3">
+										<label>{{quiz.answer1C}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.first == 4), 'bg-danger': (solution.first != 4 && answer.first == 4)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.first == 4">
+										<label>{{quiz.answer1D}}</label>
+									</div>
+								</div>
+								<div class="x-info bg-info">
+									{{quiz.info1}}
+								</div>
+								<div class="text-center x-points webfont-icon webfont_star">
+									{{quiz.dailyStatuses.length && quiz.dailyStatuses[0].quizOk1 ? quizPoints : 0}}
+								</div>
+							</div>
+							<div class="x-question-block">
+								<h3>{{quiz.question2}}</h3>
+								<div ng-class="{'bg-success': (solution.second == 1), 'bg-danger': (solution.second != 1 && answer.second == 1)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.second == 1">
+										<label>{{quiz.answer2A}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.second == 2), 'bg-danger': (solution.second != 2 && answer.second == 2)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.second == 2">
+										<label>{{quiz.answer2B}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.second == 3), 'bg-danger': (solution.second != 3 && answer.second == 3)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.second == 3">
+										<label>{{quiz.answer2C}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.second == 4), 'bg-danger': (solution.second != 4 && answer.second == 4)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.second == 4">
+										<label>{{quiz.answer2D}}</label>
+									</div>
+								</div>
+								<div class="x-info bg-info">
+									{{quiz.info2}}
+								</div>
+								<div class="text-center x-points webfont-icon webfont_star">
+									{{quiz.dailyStatuses.length && quiz.dailyStatuses[0].quizOk2 ? quizPoints : 0}}
+								</div>
+							</div>
+							<div class="x-question-block">
+								<h3>{{quiz.question3}}</h3>
+								<div ng-class="{'bg-success': (solution.third == 1), 'bg-danger': (solution.third != 1 && answer.third == 1)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.third == 1">
+										<label>{{quiz.answer3A}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.third == 2), 'bg-danger': (solution.third != 2 && answer.third == 2)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.third == 2">
+										<label>{{quiz.answer3B}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.third == 3), 'bg-danger': (solution.third != 3 && answer.third == 3)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.third == 3">
+										<label>{{quiz.answer3C}}</label>
+									</div>
+								</div><div ng-class="{'bg-success': (solution.third == 4), 'bg-danger': (solution.third != 4 && answer.third == 4)}">
+									<div class="radio">
+										<input type="radio" disabled="disabled" ng-checked="answer.third == 4">
+										<label>{{quiz.answer3D}}</label>
+									</div>
+								</div>
+								<div class="x-info bg-info">
+									{{quiz.info3}}
+								</div>
+								<div class="text-center x-points webfont-icon webfont_star">
+									{{quiz.dailyStatuses.length && quiz.dailyStatuses[0].quizOk3 ? quizPoints : 0}}
+								</div>
+							</div>
+							<div class="x-buttons">
+								<button ng-click="cancel()" type="button" class="btn btn-default btn-sm">Schließen</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

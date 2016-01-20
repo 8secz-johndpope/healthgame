@@ -1,0 +1,35 @@
+{
+	"name": "UserGoalStatus",
+	"base": "PersistedModel",
+	"properties": {
+		"id": {
+			"type": "number"
+		},
+		"totalDays": {
+			"type": "number"
+		},
+		"daysLeft": {
+			"type": "number"
+		},
+		"successful": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"validations": [],
+	"relations": {},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"accessType": "READ" 
+		}
+	],
+	"methods": []
+}

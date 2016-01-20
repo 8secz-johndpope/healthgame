@@ -1,0 +1,28 @@
+<div id="start">
+	<div class="container">
+		<div class="text-center">
+			<a id="connectBtn" ng-if="!$root.isLoggedIn" ng-click="startOauth()" ui-sref="start" class="btn btn-default btn-lg"><span>Verbinden</span></a>
+		</div>
+	</div>
+
+	<div class="box">
+		<header>
+			<h1 ng-show="!isEditing" ng-blur="saveTitle(this)">
+			{{content.title}}
+			</h1>
+			<div ng-show="isEditing" class="col-md-2">
+				<label>Seitentitel:</label>
+			</div>
+			<div ng-show="isEditing" class="col-md-10">
+				<input class="form-control" placeholder="{{content.title}}" type="text" ng-model="content.title">
+			</div>
+
+		</header>
+		<div class="x-content">
+			<a ng-if="hasEditPermission && !isEditing" ng-click="editingMode()" ui-sref="edit" class="pull-right icon-pencil"></a>
+			<textarea ng-if="isEditing" ckeditor="ckOptions" ng-model="content.markup"></textarea>
+			<button ng-disabled="saveStateDisabled" ng-if="isEditing" class="btn" ng-class="saveState" ng-click="saveChanges(this)">Änderungen speichern</button>
+			<div id="contentBox" ng-show="!isEditing" ng-bind-html="markup"></div>
+		</div>
+	</div>
+</div>

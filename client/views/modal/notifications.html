@@ -1,0 +1,23 @@
+<div class="modal-body" id="notifications-modal">
+	<div class="row">
+			<div class="modal-box">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<header>
+							<h2 class="modal-title">Updates</h2>
+						</header>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="x-sidebar">
+							<div ng-if="total">
+								<div data-x-notifications data-user-id="userId" data-page="page" data-page-size="pageSize" data-include-friends="includeFriends"></div>
+								<pagination total-items="total" ng-model="page" items-per-page="pageSize" max-size="8" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

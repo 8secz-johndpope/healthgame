@@ -1,0 +1,57 @@
+<div id="goalModal" class="x-evaluate">
+	<form ng-submit="evaluateGoal()" name="evaluateGoalForm">
+		<div class="modal-body">
+			<div class="modal-box x-gray-lighter">
+				<div class="row">
+					<div class="box">
+						<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<header>
+							<h1>
+								Ziel bewerten: {{curGoal.goal.title}}
+								<!-- <span>{{curGoal.goal.category.parent.name}} / {{curGoal.goal.category.name}}</span> -->
+							</h1>
+						</header>
+						<div class="x-content">
+							<p>{{curGoal.goal.description}}</p>
+							<p><strong>Du wolltest das Ziel an {{curGoal.goalDays}} {{curGoal.goalDays === 1 ? 'Tag' : 'Tagen'}} verfolgen.</strong></p>
+							<p><strong>Bitte bewerte ehrlich, in welchem Ausmaß Du dieses Ziel umgesetzt hast.</strong></p>
+
+							<div id="duration">
+								<div class="hidden-xs hidden-sm">
+									<input type="range" min="1" max="{{curGoal.goalDays ? curGoal.goalDays : 1}}" value="1" ng-change="checkCompleted()" ng-model="selectedCompleted" ng-change="checkCompleted()"/>
+								</div>
+
+								<div class="hidden-md hidden-lg">
+									<select
+										class="form-control"
+										ng-options="val as val for val in [curGoal.goalDays] | createRange"
+										ng-model="selectedCompleted"
+										convert-to-number>
+									</select>
+								</div>
+							</div>
+							<div class="x-ticks hidden-xs hidden-sm">
+								<div class="x-values">
+									<span>{{selectedCompleted}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="box" ng-show="showTipTextarea">
+						<header>
+							<h2>Lass andere wissen wie Du es gemacht hast und erhalte 15 Extrapunkte.</h2>
+						</header>
+						<div class="x-content">
+							<textarea class="form-control" placeholder="Dein Tipp" ng-model="enteredTip"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" ng-click="$dismiss('cancel')" class="btn btn-default">Abbrechen</button>
+			<button type="submit" class="btn btn-primary">Bewerten</button>
+		</div>
+	</form>
+</div>

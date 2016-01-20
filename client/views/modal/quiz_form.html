@@ -1,0 +1,91 @@
+<form ng-submit="submit()" name="notifySettingsForm">
+	<div class="modal-body" id="quiz-form">
+		<div class="row">
+			<div class="modal-box">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<header>
+							<h2 class="modal-title">{{quiz.title}}</h2>
+						</header>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-md-5">
+						<div class="x-sidebar">
+							<!-- <p>{{quiz.description}}</p> -->
+							<div class="x-score">
+								<h3 class="text-center">Für jede richtige Antwort bekommst du</h3>
+								<p class="x-points text-center webfont-icon webfont_star"></p>
+								<p class="x-points text-center"> {{quizPoints}} Punkte</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-7 col-md-7">
+						<div class="x-content">
+							<div class="x-question-block">
+								<h3>{{quiz.question1}}</h3>
+								<div class="radio">
+									<input type="radio" name="answer1" id="answer1A" ng-required="true" ng-change="checkBtnDisabled()" ng-value="1" ng-model="answer.first">
+									<label for="answer1A">{{quiz.answer1A}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer1" id="answer1B" ng-required="true" ng-change="checkBtnDisabled()" ng-value="2" ng-model="answer.first">
+									<label for="answer1B">{{quiz.answer1B}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer1" id="answer1C" ng-required="true" ng-change="checkBtnDisabled()" ng-value="3" ng-model="answer.first">
+									<label for="answer1C">{{quiz.answer1C}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer1" id="answer1D" ng-required="true" ng-change="checkBtnDisabled()" ng-value="4" ng-model="answer.first">
+									<label for="answer1D">{{quiz.answer1D}}</label>
+								</div>
+							</div>
+							<div class="x-question-block">
+								<h3>{{quiz.question2}}</h3>
+								<div class="radio">
+									<input type="radio" name="answer2" id="answer2A" ng-required="true" ng-change="checkBtnDisabled()" ng-value="1" ng-model="answer.second">
+									<label for="answer2A">{{quiz.answer2A}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer2" id="answer2B" ng-required="true" ng-change="checkBtnDisabled()" ng-value="2" ng-model="answer.second">
+									<label for="answer2B">{{quiz.answer2B}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer2" id="answer2C" ng-required="true" ng-change="checkBtnDisabled()" ng-value="3" ng-model="answer.second">
+									<label for="answer2C">{{quiz.answer2C}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer2" id="answer2D" ng-required="true" ng-change="checkBtnDisabled()" ng-value="4" ng-model="answer.second">
+									<label for="answer2D">{{quiz.answer2D}}</label>
+								</div>
+							</div>
+							<div class="x-question-block">
+								<h3>{{quiz.question3}}</h3>
+								<div class="radio">
+									<input type="radio" name="answer3" id="answer3A" ng-required="true" ng-change="checkBtnDisabled()" ng-value="1" ng-model="answer.third">
+									<label for="answer3A">{{quiz.answer3A}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer3" id="answer3B" ng-required="true" ng-change="checkBtnDisabled()" ng-value="2" ng-model="answer.third">
+									<label for="answer3B">{{quiz.answer3B}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer3" id="answer3C" ng-required="true" ng-change="checkBtnDisabled()" ng-value="3" ng-model="answer.third">
+									<label for="answer3C">{{quiz.answer3C}}</label>
+								</div>
+								<div class="radio">
+									<input type="radio" name="answer3" id="answer3D" ng-required="true" ng-change="checkBtnDisabled()" ng-value="4" ng-model="answer.third">
+									<label for="answer3D">{{quiz.answer3D}}</label>
+								</div>
+							</div>
+							<div class="x-buttons">
+								<button ng-click="cancel()" type="button" class="btn btn-default btn-sm">Schließen</button>
+								<button type="submit" class="btn btn-primary btn-sm x-send pull-right" ng-disabled="btnDisabled">Beantworten</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

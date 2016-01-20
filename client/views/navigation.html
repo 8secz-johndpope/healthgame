@@ -1,0 +1,58 @@
+<div id="navigation" class="navbar" role="navigation">
+	<div class="container">
+		<div class="row">
+			<div class="navbar-header">
+				<button ng-if="$root.isLoggedIn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<button ng-if="!$root.isLoggedIn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" ui-sref="start">HEALINGO</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul ng-if="$root.isLoggedIn" class="nav navbar-nav">
+					<li><a ui-sref-active="active" ui-sref="steps">Schritte</a></li>
+					<li><a ui-sref-active="active" ui-sref="quizzes">Quizzes</a></li>
+					<li><a ui-sref-active="active" ui-sref="goals">Wochenziele</a></li>
+					<li><a ui-sref-active="active" ui-sref="challenges">Challenges</a></li>
+					<li><a ui-sref-active="active" ui-sref="friends">Freunde</a></li>
+				</ul>
+				<ul ng-if="!$root.isLoggedIn"  class="nav navbar-nav">
+					<li><a ui-sref-active="active" ui-sref="howto">So funktioniert's</a></li>
+					<li><a ui-sref-active="active" ui-sref="datasecurity">Datenschutz</a></li>
+					<li><a ui-sref-active="active" ui-sref="aboutus">Über uns</a></li>
+				</ul>
+				<ul ng-if="$root.isLoggedIn" class="nav navbar-nav navbar-right">
+					<li>
+						<a ui-sref="userhome" class="x-userhome">
+							<span class="x-profile-image">
+								<img ng-src="{{userhomeLink.avatar | avatar100}}" alt="" />
+							</span>
+							<span>
+								<span>Willkommen</span><br />
+								<span class="x-username">{{userhomeLink.username}}</span>
+							</span>
+						</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a ui-sref="profile">Profil</a></li>
+							<li><a ui-sref="faq">FAQ</a></li>
+							<li><a ui-sref="settings.general">Einstellungen</a></li>
+							<li><a ui-sref="logout">Abmelden</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

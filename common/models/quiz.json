@@ -1,0 +1,155 @@
+{
+  "name": "Quiz",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "dayAt": {
+      "type": "date",
+      "required": true,
+      "dataType": "date"
+    },
+    "question1": {
+      "type": "string",
+      "required": true
+    },
+    "answer1A": {
+      "type": "string",
+      "required": true
+    },
+    "answer1B": {
+      "type": "string",
+      "required": true
+    },
+    "answer1C": {
+      "type": "string",
+      "required": true
+    },
+    "answer1D": {
+      "type": "string",
+      "required": true
+    },
+    "solution1": {
+      "type": "number",
+      "required": true
+    },
+    "info1": {
+      "type": "string",
+      "length": 2048
+    },
+    "question2": {
+      "type": "string",
+      "required": true
+    },
+    "answer2A": {
+      "type": "string",
+      "required": true
+    },
+    "answer2B": {
+      "type": "string",
+      "required": true
+    },
+    "answer2C": {
+      "type": "string",
+      "required": true
+    },
+    "answer2D": {
+      "type": "string",
+      "required": true
+    },
+    "solution2": {
+      "type": "number",
+      "required": true
+    },
+    "info2": {
+      "type": "string",
+      "length": 2048
+    },
+    "question3": {
+      "type": "string",
+      "required": true
+    },
+    "answer3A": {
+      "type": "string",
+      "required": true
+    },
+    "answer3B": {
+      "type": "string",
+      "required": true
+    },
+    "answer3C": {
+      "type": "string",
+      "required": true
+    },
+    "answer3D": {
+      "type": "string",
+      "required": true
+    },
+    "solution3": {
+      "type": "number",
+      "required": true
+    },
+    "info3": {
+      "type": "string",
+      "length": 2048
+    }
+  },
+  "hidden": ["solution1", "solution2", "solution3"],
+  "validations": [],
+  "relations": {
+    "dailyStatuses": {
+      "type": "hasMany",
+      "model": "DailyStatus",
+      "foreignKey": "quizId"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "accessType": "READ" 
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "getAnswer"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "userHistory"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "today"
+    }
+
+  ],
+  "methods": []
+}

@@ -1,0 +1,58 @@
+table.row.dailygoal
+	tr
+		td.wrapper.last
+			table.twelve.columns
+				tr
+					td
+						h4.healingo-content-text Heutiges Ziel
+						p.healingo-content-normal
+							span Dein heutiges Schrittziel sind&nbsp;
+								b= today.status.stepsGoalFormatted
+							span &nbsp;Schritte für&nbsp;
+								b= today.stepGoalPointsFormatted
+							span &nbsp;Punkte.
+					td.expander
+	tr.wrapper
+		td
+			table.twelve.columns.biggoaltable
+				tr.goalbox
+					td
+						table.four.columns.imgtable
+							tr
+								td &nbsp;
+							tr
+								td &nbsp;
+							tr
+								td.outCenter &nbsp;
+								td
+									img.png-img(src=host+"/images/mail/schrittziel_big.jpg")
+
+					td
+						table.four.columns(align="left")
+							tr
+								td &nbsp;
+							tr
+								td
+									p.healingo-content-normal Schrittziel
+							tr
+								td
+									p.healingo-values= today.status.stepsGoalFormatted
+
+					td
+						table.four.columns(align="left")
+							tr
+								td &nbsp;
+							tr
+								td
+									p.healingo-content-normal Bonuspunkte
+							tr
+								td
+									p.healingo-values= today.stepGoalPointsFormatted
+	tr
+			td.wrapper.last
+				table.twelve.columns
+					tr
+						td
+							p.healingo-content-normal Jeder Schritt zählt! Selbst wenn Du Dein Tagesziel nicht vollständig erreichst, erhälst du Punkte für Deine Schritte.
+							p.healingo-content-normal Denke daran, dass wir Dein Schrittziel nur dann optimal berechenen können, wenn Du Deine Schritte bis zum Vortag 24 Uhr synchronisiert hast.
+						td.expander

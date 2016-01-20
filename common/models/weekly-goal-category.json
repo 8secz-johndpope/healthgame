@@ -1,0 +1,51 @@
+{
+  "name": "WeeklyGoalCategory",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "parentId": {
+      "type": "number",
+      "required": false
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "length": 255
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "length": 2048
+    }
+  },
+  "validations": [],
+  "relations": {
+    "goals": {
+      "type": "hasMany",
+      "model": "WeeklyGoal",
+      "foreignKey": "categoryId"
+    },
+    "parent": {
+      "type": "belongsTo",
+      "model": "WeeklyGoalCategory",
+      "foreignKey": "parentId"
+    }
+  },
+  "acls": [
+      {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    }
+  ],
+  "methods": []
+}

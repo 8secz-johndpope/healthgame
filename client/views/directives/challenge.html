@@ -1,0 +1,26 @@
+<div
+	class="box x-orange x-challenge
+		ng-class: {
+			'x-single': challenge.perTeam === 1,
+			'x-group': challenge.perTeam > 1
+		}"
+	ng-click="$root.showChallenge(challenge.id)"
+	ui-sref="challenges.detail({id: challenge.id})"
+	title="{{challenge.name}}"
+	>
+	<header>
+		<h1>{{challenge.name}}</h1>
+	</header>
+	<div class="x-content" ng-switch="challenge.status">
+		<h2>{{challenge.perTeam === 1 ? 'Einzel' : 'Gruppen'}}challenge</h2>
+		<p ng-switch-when="upcoming" data-x-countdown class="x-info" data-end="challenge.weekAt"></p>
+		<p ng-switch-when="active" class="x-info">Aktiv</p>
+		<p ng-switch-when="past" class="x-info">Abgelaufen</p>
+		<ul class="x-goals">
+			<li
+				ng-repeat="key in [challenge.numTeams] | createRange"
+				ng-class="challenge.teams[key] !== undefined ? 'occupied' : ''">
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,189 @@
+#steps {
+	margin-bottom: 4em;
+
+	.x-content {
+		padding: 0;
+
+		.x-week {
+			background: #ccc;
+			text-align: center;
+			line-height: 4em;
+			position: relative;
+
+			.x-prev, .x-next {
+				&:extend(.webfont-icon all);
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: (@padding-large-vertical * 6);
+				line-height: (@padding-large-vertical * 6);
+				cursor: pointer;
+
+				&:before {
+					font-size: 20px;
+					border-radius: 100%;
+					background-color: @gray-light;
+					color: @gray-lighter;
+					width: 24px;
+					height: 24px;
+					line-height: 24px;
+					display: inline-block;
+				}
+				&.x-disabled {
+					display: none;
+				}
+			}
+			.x-prev {
+				.webfont-angle-left();
+				left: 0;
+
+				&:before {
+					text-align: left;
+					padding-left: 1px;
+				}
+			}
+			.x-next {
+				.webfont-angle-right();
+				right: 0;
+
+				&:before {
+					text-align: right;
+					padding-right: 1px;
+				}
+			}
+
+		}
+		.x-chart {
+			&:extend(.webfont-icon all);
+			display: block;
+			line-height: @line-height-computed;
+			.webfont-star();
+			position: relative;
+			height: 400px;
+			margin-bottom: (@padding-large-vertical);
+
+			&:before {
+				position: absolute;
+				bottom: 20px;
+				z-index: 1;
+				display: none;
+				margin-right: 7.5%;
+				color: #fff;
+
+				@media (max-width: @screen-xs-min) {
+					margin-right: 6.6%;
+				}
+			}
+			&.x-best-day {
+				&-mo, &-di, &-mi, &-do, &-fr, &-sa, &-so {
+					&:before {
+						display: block;
+					}
+				}
+				&-mo:before { right: (90%/7*(7-1)); }
+				&-di:before { right: (90%/7*(7-2)); }
+				&-mi:before { right: (90%/7*(7-3)); }
+				&-do:before { right: (90%/7*(7-4)); }
+				&-fr:before { right: (90%/7*(7-5)); }
+				&-sa:before { right: (90%/7*(7-6)); }
+				&-so:before { right: (90%/7*(7-7)); }
+			}
+			&:after {
+				content: 'tsd.';
+				display: inline-block;
+				padding-left: 18px;
+				padding-bottom: 9px;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: @gray-lighter;
+				display: none;
+			}
+		}
+		.x-legend {
+			margin: 0 0 (@padding-large-vertical);
+
+			div {
+				position: relative;
+				padding: @padding-large-vertical (@grid-gutter-width / 2);
+				padding-left: (@padding-large-vertical * 6);
+				font-size: @font-size-small;
+
+				@media (min-width: @screen-sm-min) {
+					padding-right: 0;
+				}
+				@media (max-width: @screen-xs-max) {
+					&:nth-child(odd) {
+						clear: left;
+					}
+					&:nth-child(even) {
+						padding-left: (@padding-large-vertical * 4);
+
+						&:before {
+							left: @padding-large-vertical;
+						}
+					}
+				}
+				&:before {
+					content: '';
+					width: (@line-height-base * 1em);
+					height: (@line-height-base * 1em);
+					position: absolute;
+					top: @padding-large-vertical;
+					left: (@padding-large-vertical * 3);
+				}
+				&.x-goal:before     { background: #ccc;          }
+				&.x-lower25:before  { background: @red;          }
+				&.x-medium:before   { background: @yellow;       }
+				&.x-over75:before   { background: @green;        }
+				&.x-overGoal:before { background: @green-light;  }
+
+				&.x-bestDay {
+					&:extend(.webfont-icon all);
+					line-height: @line-height-base;
+
+					&:before {
+						content: @webfont_star;
+						color: #fff;
+						text-shadow: -1px 0 @gray, 0 1px @gray, 1px 0 @gray, 0 -1px @gray;
+						font-size: 12px;
+						text-align: center;
+					}
+				}
+			}
+		}
+		.x-step-values {
+			border-top: 1px solid @gray-lighter;
+			display: table;
+			width: 100%;
+			background: #fff;
+
+			> div {
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+				padding: 1.5em (@padding-large-vertical * 2);
+
+				+ div {
+					border-left: 1px solid @gray-lighter;
+				}
+			}
+			strong {
+				display: block;
+				font-size: @font-size-h2;
+				font-weight: bold!important;
+				line-height: 26px!important;
+			}
+			.x-steps-best strong {
+				&:extend(.webfont-icon all);
+				display: block;
+				.webfont-star();
+
+				&:before {
+					padding-right: 5px;
+					font-size: @font-size-large;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,91 @@
+<div id="userhome">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 ">
+			<div data-x-steps data-isown="true" data-userid="getCurrentUserId()" title="Schritte Heute" class="box todays-steps"></div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div class="box x-green x-weekly-goals">
+				<header>
+					<h1>
+						<a title="Gehe zu den Wochenzielen" ui-sref="goals">Wochenziele</a>
+					</h1>
+				</header>
+				<div class="x-content">
+					<ul ng-if="goals.length">
+						<li ng-repeat="goal in goals">
+							<a title="Ziel öffnen" ui-sref="goals.detail({id: goal.id})">{{goal.title}}</a>
+						</li>
+					</ul>
+					<p ng-if="!goals.length">Du hast aktuell keine Wochenziele</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<div class="box x-teal x-quiz">
+				<header>
+					<h1>
+						<a title="Gehe zu den Quizzes" ui-sref="quizzes">Quiz</a>
+					</h1>
+				</header>
+				<div class="x-content" ng-switch="!!quiz">
+					<a ng-if="true" title="Gehe zum Quiz" ui-sref="quizzes.detail({id: quiz.id})">
+						<div>
+							<h2 class="x-info">Heutiges Quiz</h2>
+							<p>{{quiz.title}}</p>
+							<p>{{quiz.description}}</p>
+							<p>erhalte bis zu 65 Punkte</p>
+						</div>
+					</a>
+					<p ng-if="false">Es gibt aktuell kein neues Wochenquiz</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			<div class="box x-orange x-challenge ng-class: {'x-single': (challenge.perTeam === 1), 'x-group': (challenge.perTeam > 1)}">
+				<header>
+					<h1>
+						<a title="Gehe zu den Challenges" ui-sref="challenges">Challenge</a>
+					</h1>
+				</header>
+				<div class="x-content" ng-switch="!!challenge">
+					<a ng-switch-when="true" title="Gehe zur Challenge" ui-sref="challenges.detail({id: challenge.id})">
+						<div>
+							<h2>
+								{{challenge.name}}
+							</h2>
+							<div data-x-countdown end="challenge.weekAt" class="x-info"></div>
+							<ul class="x-goals">
+								<li
+									ng-repeat="key in [challenge.numTeams] | createRange"
+									ng-class="challenge.teams[key] !== undefined ? 'occupied' : ''">
+								</li>
+							</ul>
+						</div>
+					</a>
+					<p ng-switch-when="false">Diese Woche nimmst du an keiner Challenge teil</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-8">
+			<div class="box">
+				<div class="x-notifications">
+					<header>
+						<h1>Updates</h1>
+						<span ng-if="notificationsUnread" class="x-counter">{{ notificationsUnread }}</span>
+					</header>
+					<div class="x-content x-has-show-all">
+						<div data-x-notifications data-user-id="getCurrentUserId()" data-page="1" data-page-size="4" data-include-friends="true"></div>
+						<a class="x-show-all" ng-click="showAllNotifications()">Alle ansehen</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div data-x-status class="box x-status" data-userid="getCurrentUserId()" title="Status"></div>
+		</div>
+	</div>
+</div>

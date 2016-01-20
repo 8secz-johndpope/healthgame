@@ -1,0 +1,33 @@
+<div id="journeymap">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h2 class="modal-title">Meine Reisestrecke</h2>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+				<ui-gmap-markers
+					models="map.markers"
+					coords="'self'"
+					icon="'icon'"
+					click="onMarkerClick"
+					options="'options'"
+					>
+					<ui-gmap-windows
+						show="'show'"
+						ng-cloak>
+						<div ng-non-bindable>
+							<h1>{{content.title}}</h1>
+						</div>
+					</ui-gmap-windows>
+				</ui-gmap-markers>
+				<ui-gmap-polyline
+					path="map.polyline.path"
+					stroke="map.polyline.stroke"
+					geodesic="true"
+					>
+				</ui-gmap-polyline>
+			</ui-gmap-google-map>
+		</div>
+	</div>
+</div>

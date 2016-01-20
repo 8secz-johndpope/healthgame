@@ -1,0 +1,55 @@
+{
+  "name": "StepsWeekly",
+  "base": "Model",
+  "public": false,
+  "idName": "userId",
+  "properties": {
+    "userId": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "week": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "weekAt": {
+      "type": "date",
+      "required": true
+    },
+    "steps": {
+      "type": "number"
+    },
+    "weeklyStatusId": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": "userId"
+    },
+    "weeklyStatus": {
+      "type": "belongsTo",
+      "model": "WeeklyStatus",
+      "foreignKey": "weeklyStatusId"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "findById"
+    }
+  ],
+  "methods": []
+}

@@ -1,0 +1,128 @@
+{
+	"name": "DailyStatus",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"userId": {
+			"type": "number",
+			"required": true
+		},
+		"dayAt": {
+			"type": "date",
+			"required": true,
+			"dataType": "date"
+		},
+		"stepsDone": {
+			"type": "number"
+		},
+		"stepsGoal": {
+			"type": "number"
+		},
+		"stepsTotal": {
+			"type": "number"
+		},
+		"stepsManual": {
+			"type": "number"
+		},
+		"goalReached": {
+			"type": "boolean",
+			"default": false
+		},
+		"goalMailedAt": {
+			"type": "date"
+		},
+		"quizId": {
+			"type": "number"
+		},
+		"quizAnswer1": {
+			"type": "number"
+		},
+		"quizAnswer2": {
+			"type": "number"
+		},
+		"quizAnswer3": {
+			"type": "number"
+		},
+		"quizOk1": {
+			"type": "boolean"
+		},
+		"quizOk2": {
+			"type": "boolean"
+		},
+		"quizOk3": {
+			"type": "boolean"
+		},
+		"quizPointLogId": {
+			"type": "number"
+		},
+		"stepPointLogId": {
+			"type": "number"
+		},
+		"loginPointLogId": {
+			"type": "number"
+		},
+		"stepsFetchedAt": {
+			"type": "date"
+		},
+		"stepsProcessedAt": {
+			"type": "date"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"user": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "userId"
+		},
+		"quiz": {
+			"type": "belongsTo",
+			"model": "Quiz",
+			"foreignKey": "quizId"
+		},
+		"stepPointLog": {
+			"type": "belongsTo",
+			"model": "PointLog",
+			"foreignKey": "stepPointLogId"
+		},
+		"quizPointLog": {
+			"type": "belongsTo",
+			"model": "PointLog",
+			"foreignKey": "quizPointLogId"
+		},
+		"loginPointLog": {
+			"type": "belongsTo",
+			"model": "PointLog",
+			"foreignKey": "loginPointLogId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"accessType": "READ"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "create"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$owner",
+			"permission": "ALLOW",
+			"property": "upsert"
+		}
+	],
+	"methods": []
+}

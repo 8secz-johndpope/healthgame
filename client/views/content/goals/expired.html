@@ -1,0 +1,32 @@
+<div class="row">
+	<div ng-if="goals.length < 1" class="col-sm-6 col-xs-12 col-md-3 place-middle x-no-finished-goals">
+		<div class="box">
+			<div class="x-content">
+				Es ist bisher kein Wochenziel abgelaufen.
+			</div>
+		</div>
+	</div>
+
+	<div ng-repeat="(week_key, week) in goals" class="x-week ng-class: {'x-open': (!week_key || week_key && weekStates[week_key]), 'x-close': (week_key && !weekStates[week_key])}">
+		<a ng-click="toggleWeekState(week_key)" class="x-week-opener">{{week.title}}</a>
+		<div ng-repeat="singleGoal in week.goals"
+			ui-sref="goals.detail({id: singleGoal.id})" ng-click="showGoal(singleGoal.id)" class="col-sm-6 col-xs-12 col-md-3 x-goal"
+			title="{{singleGoal.goal.title}}">
+
+			<div class="box x-green x-weekly-goals">
+				<header>
+					<h1>{{singleGoal.goal.title}}</h1>
+				</header>
+				<div class="x-content">
+					<ul class="goal-resultat">
+						<li>
+							<strong>{{singleGoal.goal.category.name}}</strong>
+						</li>
+						<li>{{singleGoal.completedDays}} / {{singleGoal.goalDays}} Tagen geschafft</li>
+						<li class="points">{{singleGoal.pointLog.points}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

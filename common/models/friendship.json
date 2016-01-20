@@ -1,0 +1,73 @@
+{
+	"name": "Friendship",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"userId": {
+			"type": "hasOne",
+			"model": "User",
+			"foreignKey": "userId"
+		},
+		"friendId": {
+			"type": "hasOne",
+			"model": "User",
+			"foreignKey": "userId"
+		},
+		"confirmed": {
+			"type": "boolean"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"user": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "userId"
+		},
+		"friend": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "friendId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "search"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "findRequests"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "recommend"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "doConfirm"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "doDeny"
+		}
+	],
+	"methods": []
+}

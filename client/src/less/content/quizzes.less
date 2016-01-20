@@ -1,0 +1,63 @@
+#quizzes {
+	.x-quiz-week-opener {
+		&:extend(.webfont-icon all);
+		.webfont-angle-down();
+
+		display: block;
+		background-color: #fff;
+		padding: 10px 20px;
+		color: inherit;
+		font-weight: bold;
+
+		&:before {
+			float: right;
+		}
+		
+		&.first {
+			cursor: default;
+		}
+	}
+
+	.x-close { .x-quiz-week-opener + div { display: none; }}
+	.x-open { .x-quiz-week-opener + div { display: block; }}
+
+	.x-quiz-week.x-open .x-quiz-week-opener { .webfont-angle-up(); }
+
+	.box, .x-quiz-week-opener {
+		cursor: pointer;
+	}
+
+	.box {
+		min-height: 226px;
+		margin-bottom: 30px;
+	}
+
+	.x-quiz-week-opener {
+		margin-bottom: 30px;
+	}
+
+	.x-quiz-week {
+		&:first-child {
+			.x-quiz-week-opener {
+
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.invisible {
+		visibility: hidden;
+
+		@media (max-width: @screen-md-min) {
+			display: none;
+		}
+	}
+}
+
+#quiz-detail {
+	h3 {
+		line-height: @line-height-base;
+	}
+}

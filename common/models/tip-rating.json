@@ -1,0 +1,65 @@
+{
+	"name": "TipRating",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"tipId": {
+			"type": "number",
+			"required": true
+		},
+		"userId": {
+			"type": "number",
+			"required": true
+		},
+		"vote": {
+			"type": "boolean",
+			"required": true
+		},
+		"created": {
+			"type": "date",
+			"required": true
+		}
+	},
+	"validations": [],
+	"relations": {
+		"user": {
+			"type": "belongsTo",
+			"model": "User",
+			"foreignKey": "userId"
+		},
+		"tip": {
+			"type": "belongsTo",
+			"model": "UserGoal",
+			"foreignKey": "tipId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"accessType": "READ"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "deleteById"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"property": "create"
+		}
+	],
+	"methods": []
+}

@@ -1,0 +1,36 @@
+<div id="steps" ng-show="$root.isLoggedIn">
+	<div class="box">
+		<header>
+			<h1>Meine Schritte</h1>
+		</header>
+		<div class="x-content">
+			<div class="x-week">
+				<a ng-click="showPrevWeek()" class="x-prev"></a>
+				{{weekChunk}}
+				<a ng-click="showNextWeek()" class="x-next {{isNextDisabled ? 'x-disabled' : null}}"></a>
+			</div>
+
+			<div class="x-chart x-best-day-{{bestDay | lowercase}}" google-chart chart="chartObject" style="{{cssStyle}}"></div>
+
+			<div class="x-legend row">
+				<div class="col-md-2 col-sm-4 col-xs-6 x-goal">Schrittziel</div>
+				<div class="col-md-2 col-sm-4 col-xs-6 x-lower25">weniger als 25&thinsp;%</div>
+				<div class="col-md-2 col-sm-4 col-xs-6 x-medium">25&thinsp;% bis 75&thinsp;%</div>
+				<div class="col-md-2 col-sm-4 col-xs-6 x-over75">mehr als 75&thinsp;%</div>
+				<div class="col-md-2 col-sm-4 col-xs-6 x-overGoal">Ziel überboten</div>
+				<div class="col-md-2 col-sm-4 col-xs-6 x-bestDay">bester Tag</div>
+			</div>
+
+			<div class="x-step-values">
+				<div>
+					<strong>{{stepsWeek | number}}</strong>
+					<p>Schritte dieser Woche</p>
+				</div>
+				<div class="x-steps-best">
+					<strong>{{stepsBest | number}}</strong>
+					<p>Bester Tag der Woche</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<div class="modal-body" id="achievementModal">
+	<div class="row">
+		<div class="modal-box">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<button type="button" class="close" ng-click="$dismiss('cancel')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<header>
+						<h2 class="modal-title">Achievements</h2>
+					</header>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="x-sidebar">
+						<div class="x-awards">
+							<ul class="x-badges row" ng-repeat="(group, grpValue) in achievementData">
+								<li class="col-md-4 col-sm-4 col-xs-6" ng-repeat="(achvKey, achvValue) in grpValue">
+									<span class="x-badge-icon x-badge x-badges-big-{{achvValue.name}} {{achvValue.state}}"></span>
+									<span class="x-badge-label">{{achvValue.displayName}}</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

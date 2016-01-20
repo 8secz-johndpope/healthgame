@@ -1,0 +1,49 @@
+{
+	"name": "ChallengeStats",
+	"base": "PersistedModel",
+	"idName": "challengeId",	
+	"properties": {
+		"challengeId": {
+			"type": "number",
+			"required": true,
+			"id": true
+		},		
+		"teamNum": {
+			"type": "number"
+		},		
+		"quizPoints": {
+			"type": "number"
+		},
+		"goalPoints": {
+			"type": "number"
+		},
+		"stepPoints": {
+			"type": "number"
+		},
+		"totalPoints": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"challenge": {
+			"type": "belongsTo",
+			"model": "Challenge",
+			"foreignKey": "challengeId"
+		}
+	},
+	"acls": [
+		{
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+		},
+		{
+			"principalType": "ROLE",
+			"principalId": "$authenticated",
+			"permission": "ALLOW",
+			"accessType": "READ" 
+		}
+	],
+	"methods": []
+}

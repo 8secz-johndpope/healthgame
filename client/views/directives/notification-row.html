@@ -1,0 +1,13 @@
+<li class="x-notification">
+	<div class="row">
+		<div class="col-xs-3 col-sm-2">
+			<img ng-src="{{notification.user.avatar100| avatar100}}" alt="{{notification.user.username}}">
+		</div>
+		<div class="col-xs-9 col-sm-10">
+			<p class="x-activities-desc"></p>
+			<p>
+				<time data-x-timeago class="x-subline" datetime="{{notification.createdAt}}">{{notification.createdAt | date : 'd. MMMM  y H:mm:ss'}}</time>
+			</p>
+		</div>
+	</div>
+</li>

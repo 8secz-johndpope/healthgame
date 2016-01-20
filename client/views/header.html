@@ -1,0 +1,42 @@
+<div id="header" ng-attr-style="{{bgImage ? 'background-image: url(dist/images/' + bgImage + ')' : undefined}}" ng-class="{bgTop: bgTopOn}">
+	<div class="gradient"></div>
+	<div ng-if="$root.isLoggedIn" class="container">
+		<div class="row">
+			<div ng-if="totalProgress" id="story-progress">
+				<div class="x-arrow x-left"></div>
+				<div class="x-progressbar">
+					<div class="x-start">
+						<div class="x-star">
+							<div class="x-city">{{ totalProgress.startCity }}</div>
+						</div>
+					</div>
+					<div class="x-progress-range">
+						<div class="x-progress" ng-attr-style="left: {{totalProgress.currentPointsPercent | number }}%;">
+							<div class="x-marker">
+								<div class="x-profile-image">
+									<a ui-sref="profile">
+										<img ng-src="{{totalProgress.avatar | avatar100}}" alt="" />
+									</a>
+								</div>
+							</div>
+							<div class="x-position">
+								<div class="x-points">{{ totalProgress.currentPoints | number }}</div>
+							</div>
+						</div>
+					</div>
+					<div class="x-goal">
+						<div class="x-tooltip" ng-click="showJourneyMap()">
+							<div class="x-city">{{ totalProgress.goalCity }}</div>
+							<div class="x-remaining-points">Noch {{ totalProgress.remainingPoints | number }} Punkte</div>
+							<span class="x-triangle-down"></span>
+						</div>
+						<div class="x-star">
+							<div class="x-points">{{ totalProgress.goalPoints | number }}</div>
+						</div>
+					</div>
+				</div>
+				<div class="x-arrow x-right"></div>
+			</div>
+		</div>
+	</div>
+</div>

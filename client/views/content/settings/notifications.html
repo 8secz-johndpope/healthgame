@@ -1,0 +1,30 @@
+<div class="box x-gray-light">
+	<header>
+		<h1>Benachrichtigungen</h1>
+	</header>
+	<div class="x-content">
+		<form ng-submit="updateSettings()" ng-controller="SettingsController" name="notifySettingsForm">
+			<ul>
+				<li>
+					Entscheide hier, ob Du von uns E-Mails erhalten möchtest.
+				</li>
+				<li>
+					<div class="form-group">
+						<div class="pull-left">
+							<input id="notifyDaily" name="notifyDaily" type="checkbox" ng-checked="user.notifyDaily" ng-true-value="1" ng-false-value="0" ng-model="user.notifyDaily">
+						</div>
+						<div>
+							<label for="notifyDaily">tägliche Statusmail</label>
+						</div>
+					</div>
+				</li>
+				<li ng-if="success !== undefined" class="x-alert-box">
+					<div class="alert ng-class: {'alert-success': success, 'alert-danger': !success}">{{ message }}</div>
+				</li>
+				<li>
+					<button type="submit" ng-disabled="!updateSettings" class="btn btn-primary">Speichern</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "mysqlDs": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "develop",
+    "password": "develop",
+    "database": "healingo"
+  },
+  "mail": {
+    "name": "mail",
+    "connector": "mail",
+    "transports": [{
+       "type": "smtp",
+       "host": "host",
+       "secure": true,
+       "port": 465,       
+       "auth": {
+         "user": "smtp-user",
+         "pass": "smtp-password"
+       }
+     }]
+  }
+}
+

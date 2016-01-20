@@ -1,0 +1,40 @@
+<div class="box x-gray-light">
+	<header>
+		<h1>Privatsphäre</h1>
+	</header>
+	<div class="x-content">
+		<form ng-submit="updateSettings()" ng-controller="SettingsController" name="privacySettingsForm">
+			<ul>
+				<li>
+					<span>Entscheide hier, wer Dein Profil sehen kann. Ist keine Checkbox ausgewählt, kann kein Nutzer Dein Profil finden.</span>
+				</li>
+				<li>
+					<div class="form-group">
+						<div class="pull-left">
+							<input name="privacyFriend" type="checkbox" ng-checked="user.privacyFriend == 1" ng-true-value="1" ng-false-value="0" ng-model="user.privacyFriend">
+						</div>
+						<div>
+							<label>Freunde</label>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="form-group">
+						<div class="pull-left">
+							<input name="privacyPublic" type="checkbox" ng-checked="user.privacyPublic == 1" ng-true-value="1" ng-false-value="0" ng-model="user.privacyPublic">
+						</div>
+						<div>
+							<label>Öffentlich</label>
+						</div>
+					</div>
+				</li>
+				<li ng-if="success !== undefined" class="x-alert-box">
+					<div class="alert ng-class: {'alert-success': success, 'alert-danger': !success}">{{ message }}</div>
+				</li>
+				<li>
+					<button type="submit" ng-disabled="!updateSettings" class="btn btn-primary">Speichern</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
